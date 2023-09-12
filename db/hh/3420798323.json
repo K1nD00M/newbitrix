@@ -1,0 +1,510 @@
+{
+  "timeCreate": 1693830818868,
+  "id": "3420798323",
+  "state": {
+    "id": "response",
+    "name": "Отклик"
+  },
+  "created_at": "2023-09-01T01:22:36+0300",
+  "updated_at": "2023-09-01T01:22:36+0300",
+  "resume": {
+    "last_name": "Шамагин",
+    "first_name": "Максим",
+    "middle_name": null,
+    "title": "Старший бухгалтер",
+    "created_at": "2023-08-12T17:44:56+0300",
+    "updated_at": "2023-08-12T17:46:43+0300",
+    "area": {
+      "id": "1",
+      "name": "Москва",
+      "url": "https://api.hh.ru/areas/1"
+    },
+    "age": null,
+    "gender": {
+      "id": "male",
+      "name": "Мужской"
+    },
+    "salary": null,
+    "photo": null,
+    "total_experience": {
+      "months": 0
+    },
+    "certificate": [],
+    "owner": {
+      "id": "64124562",
+      "comments": {
+        "url": "https://api.hh.ru/applicant_comments/64124562",
+        "counters": {
+          "total": 1
+        }
+      }
+    },
+    "can_view_full_info": true,
+    "negotiations_history": {
+      "url": "https://api.hh.ru/resumes/8dfab0eb000c453c0d00250c5b57646f386351/negotiations_history"
+    },
+    "hidden_fields": [],
+    "actions": {
+      "download": {
+        "pdf": {
+          "url": "https://api.hh.ru/resumes/8dfab0eb000c453c0d00250c5b57646f386351/download/%D0%A8%D0%B0%D0%BC%D0%B0%D0%B3%D0%B8%D0%BD%20%D0%9C%D0%B0%D0%BA%D1%81%D0%B8%D0%BC.pdf?type=pdf&topic_id=3420798323&vacancy_id=84572325"
+        },
+        "rtf": {
+          "url": "https://api.hh.ru/resumes/8dfab0eb000c453c0d00250c5b57646f386351/download/%D0%A8%D0%B0%D0%BC%D0%B0%D0%B3%D0%B8%D0%BD%20%D0%9C%D0%B0%D0%BA%D1%81%D0%B8%D0%BC.rtf?type=rtf&topic_id=3420798323&vacancy_id=84572325"
+        }
+      }
+    },
+    "url": "https://api.hh.ru/resumes/8dfab0eb000c453c0d00250c5b57646f386351?topic_id=3420798323",
+    "alternate_url": "https://hh.ru/resume/8dfab0eb000c453c0d00250c5b57646f386351?t=3420798323&vacancyId=84572325",
+    "id": "8dfab0eb000c453c0d00250c5b57646f386351",
+    "download": {
+      "pdf": {
+        "url": "https://api.hh.ru/resumes/8dfab0eb000c453c0d00250c5b57646f386351/download/%D0%A8%D0%B0%D0%BC%D0%B0%D0%B3%D0%B8%D0%BD%20%D0%9C%D0%B0%D0%BA%D1%81%D0%B8%D0%BC.pdf?type=pdf&topic_id=3420798323&vacancy_id=84572325"
+      },
+      "rtf": {
+        "url": "https://api.hh.ru/resumes/8dfab0eb000c453c0d00250c5b57646f386351/download/%D0%A8%D0%B0%D0%BC%D0%B0%D0%B3%D0%B8%D0%BD%20%D0%9C%D0%B0%D0%BA%D1%81%D0%B8%D0%BC.rtf?type=rtf&topic_id=3420798323&vacancy_id=84572325"
+      }
+    },
+    "platform": {
+      "id": "headhunter"
+    },
+    "education": {
+      "level": {
+        "id": "unfinished_higher",
+        "name": "Неоконченное высшее"
+      },
+      "primary": [
+        {
+          "name": "Южно-Уральский государственный университет (Национальный исследовательский университет), Челябинск",
+          "organization": "",
+          "result": "",
+          "year": 2025,
+          "name_id": "43716",
+          "organization_id": null,
+          "result_id": null
+        }
+      ]
+    },
+    "experience": [],
+    "favorited": false,
+    "viewed": false,
+    "marked": false
+  },
+  "viewed_by_opponent": true,
+  "has_updates": false,
+  "messages_url": "https://api.hh.ru/negotiations/3420798323/messages",
+  "counters": {
+    "messages": 1,
+    "unread_messages": 0
+  },
+  "chat_states": {
+    "response_reminder_state": {
+      "allowed": false
+    }
+  },
+  "source": "NEGOTIATION",
+  "chat_id": 3417753818,
+  "messaging_status": "ok",
+  "employer_state": {
+    "id": "phone_interview",
+    "name": "Тел. интервью"
+  },
+  "vacancy": {
+    "id": "84572325",
+    "premium": false,
+    "name": "Директор по строительству",
+    "department": null,
+    "has_test": false,
+    "response_letter_required": false,
+    "area": {
+      "id": "2",
+      "name": "Санкт-Петербург",
+      "url": "https://api.hh.ru/areas/2"
+    },
+    "salary": {
+      "from": 150000,
+      "to": 300000,
+      "currency": "RUR",
+      "gross": false
+    },
+    "type": {
+      "id": "open",
+      "name": "Открытая"
+    },
+    "address": {
+      "city": "деревня Лопухинка",
+      "street": null,
+      "building": null,
+      "lat": 59.730343,
+      "lng": 29.411507,
+      "description": null,
+      "raw": "деревня Лопухинка",
+      "metro": null,
+      "metro_stations": [],
+      "id": "11630347"
+    },
+    "response_url": null,
+    "sort_point_distance": null,
+    "published_at": "2023-08-23T16:39:20+0300",
+    "created_at": "2023-08-23T16:39:20+0300",
+    "archived": false,
+    "apply_alternate_url": "https://hh.ru/applicant/vacancy_response?vacancyId=84572325",
+    "show_logo_in_search": null,
+    "insider_interview": null,
+    "url": "https://api.hh.ru/vacancies/84572325?host=hh.ru",
+    "alternate_url": "https://hh.ru/vacancy/84572325",
+    "employer": {
+      "id": "2427995",
+      "name": "Веселый Водовоз",
+      "url": "https://api.hh.ru/employers/2427995",
+      "alternate_url": "https://hh.ru/employer/2427995",
+      "logo_urls": {
+        "90": "https://hhcdn.ru/employer-logo/1806450.jpeg",
+        "240": "https://hhcdn.ru/employer-logo/1806451.jpeg",
+        "original": "https://hhcdn.ru/employer-logo-original/341046.JPG"
+      },
+      "vacancies_url": "https://api.hh.ru/vacancies?employer_id=2427995",
+      "accredited_it_employer": false,
+      "trusted": true
+    },
+    "professional_roles": [
+      {
+        "id": "108",
+        "name": "Руководитель строительного проекта"
+      }
+    ]
+  },
+  "templates": [
+    {
+      "id": "assessment_owner_tool",
+      "url": "https://api.hh.ru/message_templates/assessment_owner_tool?topic_id=3420798323",
+      "name": "Приглашение на Оценку (свой инструмент оценки)",
+      "quick": false
+    },
+    {
+      "id": "invite",
+      "url": "https://api.hh.ru/message_templates/invite?topic_id=3420798323",
+      "name": "Приглашение на Телефонное интервью",
+      "quick": false
+    },
+    {
+      "id": "invite_after_response",
+      "url": "https://api.hh.ru/message_templates/invite_after_response?topic_id=3420798323",
+      "name": "Приглашение откликнувшегося соискателя на Телефонное интервью",
+      "quick": false
+    },
+    {
+      "id": "discard_after_interview",
+      "url": "https://api.hh.ru/message_templates/discard_after_interview?topic_id=3420798323",
+      "name": "Отказ",
+      "quick": false
+    },
+    {
+      "id": "discard_after_response",
+      "url": "https://api.hh.ru/message_templates/discard_after_response?topic_id=3420798323",
+      "name": "Отказ откликнувшемуся на вакансию соискателю",
+      "quick": false
+    },
+    {
+      "id": "interview",
+      "url": "https://api.hh.ru/message_templates/interview?topic_id=3420798323",
+      "name": "Приглашение на Интервью",
+      "quick": false
+    },
+    {
+      "id": "offer",
+      "url": "https://api.hh.ru/message_templates/offer?topic_id=3420798323",
+      "name": "Приглашение на Предложение о работе",
+      "quick": false
+    },
+    {
+      "id": "consider",
+      "url": "https://api.hh.ru/message_templates/consider?topic_id=3420798323",
+      "name": "Приглашение на этап Подумать",
+      "quick": false
+    },
+    {
+      "id": "hired",
+      "url": "https://api.hh.ru/message_templates/hired?topic_id=3420798323",
+      "name": "Приглашение на Выход на работу",
+      "quick": false
+    }
+  ],
+  "actions": [
+    {
+      "id": "assessment",
+      "name": "Оценка",
+      "method": "PUT",
+      "enabled": true,
+      "url": "https://api.hh.ru/negotiations/assessment/3420798323",
+      "templates": [
+        {
+          "id": "assessment_owner_tool",
+          "url": "https://api.hh.ru/message_templates/assessment_owner_tool?topic_id=3420798323",
+          "name": "Приглашение на Оценку (свой инструмент оценки)",
+          "quick": false
+        }
+      ],
+      "arguments": [
+        {
+          "id": "message",
+          "required": false,
+          "required_arguments": []
+        },
+        {
+          "id": "send_sms",
+          "required": false,
+          "required_arguments": [
+            {
+              "id": "message"
+            }
+          ]
+        }
+      ],
+      "resulting_employer_state": {
+        "id": "assessment",
+        "name": "Оценка"
+      }
+    },
+    {
+      "id": "phone_interview",
+      "name": "Телефонное интервью",
+      "method": "PUT",
+      "enabled": true,
+      "url": "https://api.hh.ru/negotiations/phone_interview/3420798323",
+      "templates": [
+        {
+          "id": "invite",
+          "url": "https://api.hh.ru/message_templates/invite?topic_id=3420798323",
+          "name": "Приглашение на Телефонное интервью",
+          "quick": false
+        },
+        {
+          "id": "invite_after_response",
+          "url": "https://api.hh.ru/message_templates/invite_after_response?topic_id=3420798323",
+          "name": "Приглашение откликнувшегося соискателя на Телефонное интервью",
+          "quick": false
+        }
+      ],
+      "arguments": [
+        {
+          "id": "message",
+          "required": false,
+          "required_arguments": []
+        },
+        {
+          "id": "send_sms",
+          "required": false,
+          "required_arguments": [
+            {
+              "id": "message"
+            }
+          ]
+        },
+        {
+          "id": "address_id",
+          "required": false,
+          "required_arguments": [
+            {
+              "id": "message"
+            }
+          ]
+        }
+      ],
+      "resulting_employer_state": {
+        "id": "phone_interview",
+        "name": "Тел. интервью"
+      }
+    },
+    {
+      "id": "discard_by_employer",
+      "name": "Отказ",
+      "method": "PUT",
+      "enabled": true,
+      "url": "https://api.hh.ru/negotiations/discard_by_employer/3420798323",
+      "templates": [
+        {
+          "id": "discard_after_interview",
+          "url": "https://api.hh.ru/message_templates/discard_after_interview?topic_id=3420798323",
+          "name": "Отказ",
+          "quick": false
+        },
+        {
+          "id": "discard_after_response",
+          "url": "https://api.hh.ru/message_templates/discard_after_response?topic_id=3420798323",
+          "name": "Отказ откликнувшемуся на вакансию соискателю",
+          "quick": false
+        }
+      ],
+      "arguments": [
+        {
+          "id": "message",
+          "required": false,
+          "required_arguments": []
+        }
+      ],
+      "resulting_employer_state": {
+        "id": "discard_by_employer",
+        "name": "Отказано"
+      }
+    },
+    {
+      "id": "interview",
+      "name": "Интервью",
+      "method": "PUT",
+      "enabled": true,
+      "url": "https://api.hh.ru/negotiations/interview/3420798323",
+      "templates": [
+        {
+          "id": "interview",
+          "url": "https://api.hh.ru/message_templates/interview?topic_id=3420798323",
+          "name": "Приглашение на Интервью",
+          "quick": false
+        }
+      ],
+      "arguments": [
+        {
+          "id": "message",
+          "required": false,
+          "required_arguments": []
+        },
+        {
+          "id": "send_sms",
+          "required": false,
+          "required_arguments": [
+            {
+              "id": "message"
+            }
+          ]
+        },
+        {
+          "id": "address_id",
+          "required": false,
+          "required_arguments": [
+            {
+              "id": "message"
+            }
+          ]
+        }
+      ],
+      "resulting_employer_state": {
+        "id": "interview",
+        "name": "Интервью"
+      }
+    },
+    {
+      "id": "offer",
+      "name": "Предложение о работе",
+      "method": "PUT",
+      "enabled": true,
+      "url": "https://api.hh.ru/negotiations/offer/3420798323",
+      "templates": [
+        {
+          "id": "offer",
+          "url": "https://api.hh.ru/message_templates/offer?topic_id=3420798323",
+          "name": "Приглашение на Предложение о работе",
+          "quick": false
+        }
+      ],
+      "arguments": [
+        {
+          "id": "message",
+          "required": false,
+          "required_arguments": []
+        },
+        {
+          "id": "send_sms",
+          "required": false,
+          "required_arguments": [
+            {
+              "id": "message"
+            }
+          ]
+        }
+      ],
+      "resulting_employer_state": {
+        "id": "offer",
+        "name": "Предложение о работе"
+      }
+    },
+    {
+      "id": "consider",
+      "name": "Подумать",
+      "method": "PUT",
+      "enabled": true,
+      "url": "https://api.hh.ru/negotiations/consider/3420798323",
+      "templates": [
+        {
+          "id": "consider",
+          "url": "https://api.hh.ru/message_templates/consider?topic_id=3420798323",
+          "name": "Приглашение на этап Подумать",
+          "quick": false
+        }
+      ],
+      "arguments": [
+        {
+          "id": "message",
+          "required": false,
+          "required_arguments": []
+        },
+        {
+          "id": "send_sms",
+          "required": false,
+          "required_arguments": [
+            {
+              "id": "message"
+            }
+          ]
+        }
+      ],
+      "resulting_employer_state": {
+        "id": "consider",
+        "name": "Подумать"
+      }
+    },
+    {
+      "id": "hired",
+      "name": "Выход на работу",
+      "method": "PUT",
+      "enabled": true,
+      "url": "https://api.hh.ru/negotiations/hired/3420798323",
+      "templates": [
+        {
+          "id": "hired",
+          "url": "https://api.hh.ru/message_templates/hired?topic_id=3420798323",
+          "name": "Приглашение на Выход на работу",
+          "quick": false
+        }
+      ],
+      "arguments": [
+        {
+          "id": "message",
+          "required": false,
+          "required_arguments": []
+        },
+        {
+          "id": "send_sms",
+          "required": false,
+          "required_arguments": [
+            {
+              "id": "message"
+            }
+          ]
+        },
+        {
+          "id": "address_id",
+          "required": false,
+          "required_arguments": [
+            {
+              "id": "message"
+            }
+          ]
+        }
+      ],
+      "resulting_employer_state": {
+        "id": "hired",
+        "name": "Выход на работу"
+      }
+    }
+  ]
+}

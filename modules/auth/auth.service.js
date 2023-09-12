@@ -4,7 +4,8 @@ class AuthService {
    }
    static auth() { 
       return 'Ге хахах'
-   } 
+   }
+   static 
 }
 
 module.exports = AuthService

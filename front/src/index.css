@@ -1,0 +1,57 @@
+
+* {
+   box-sizing: border-box;
+}
+/* Обнуление стилей */
+body, h1, h2, h3, h4, h5, h6, p, ul, ol, li {
+   margin: 0;
+   padding: 0;
+ }
+ 
+ body {
+   font-family: Arial, sans-serif;
+ }
+ 
+ /* Дополнительные обнуления или стили могут быть добавлены здесь */
+ 
+ /* Установка базовых размеров для элементов */
+ h1, h2, h3, h4, h5, h6 {
+   font-size: 1em;
+   font-weight: normal;
+ }
+ 
+ ul, ol {
+   list-style: none;
+ }
+ 
+ /* Сброс отступов у изображений и других встроенных элементов */
+ img, embed, object, iframe {
+   margin: 0;
+   padding: 0;
+   border: none;
+ }
+ 
+ /* Сброс стилей ссылок */
+ a {
+   text-decoration: none;
+   color: inherit;
+ }
+ 
+ /* Если вам нужно обнулить бордер-бокс и другие стили, то можете продолжить добавлять стили сюда */
+ 
+ /* Обнуление стилей форм */
+ input, textarea, select, button {
+   margin: 0;
+   padding: 0;
+   border: none;
+   font-family: inherit;
+   font-size: inherit;
+ }
+ 
+ button {
+   cursor: pointer;
+ }
+ 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

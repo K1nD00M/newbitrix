@@ -4,6 +4,8 @@ const router = express.Router();
 const logger = require('../../libs/logger');
 const hhApi = require('./hh.api');
 
+const token = 'USERKADN9EMRIAHSV8C6B81CLV90ITTDT54MUF1S56T7V7639M3DO8VS5AQ84DAP'
+
 router.get('/query', async (req, res) => {
    const code = req.query.code
    try {
@@ -13,15 +15,15 @@ router.get('/query', async (req, res) => {
    } catch (error) {
       res.status(500)
       logger.error(`GET /hh/query \n${error}`)
-      res.send('Возникла ошибка при обработке запроса. Повторите попытку')
+      res.send(error)
    }
 });
 router.get('/messages/:id', async (req, res) => {
-   const id = req.query.id
+   const id = req.params.id
    try {
-      const messages = await HHService.getMessages(token, id)
-      logger.info('GET /hh/messages')
-      res.json(messages)
+      const messages = await hhApi.getMessages(token, id)
+      logger.info(`GET /hh/messages/${id}`)
+      res.send(messages)
    } catch (error) {
       res.status(500)
       logger.error(`GET /hh/messages \n${error}`)
@@ -29,25 +31,25 @@ router.get('/messages/:id', async (req, res) => {
    }
 });
 router.post('/messages/:id', async (req, res) => {
-   const id = req.query.id
+   const id = req.params.id
    const message = req.body.message
    try {
-      const data = await hhApi.sendMessage(token, message, id)
+      await hhApi.sendMessage(token, message, id)
+      const newMessages = await hhApi.getMessages(token, id)
       logger.info(`POST /messages/${id}`)
       
-      res.json(data)
+      res.json(newMessages)
    } catch (error) {
       res.status(500)
       logger.error(`POST /messages/${id} \n${error}`)
-      res.send('Возникла ошибка при обработке запроса. Повторите попытку')
+      res.send(error)
    }
 })
-router.get('/:url', async (req, res) => {
-   const url = req.query.url
+router.post('/command', async (req, res) => {
+   const url = req.body.url
    try {
-      const data = await hhApi.url(url)
-      logger.info(`GET /hh/${url}`)
-      
+      const data = await hhApi.url(token, url)
+      logger.info(`Post /hh/${url}`)
       res.send(data)
    } catch (error) {
       res.status(500)
@@ -55,17 +57,17 @@ router.get('/:url', async (req, res) => {
       res.send('Возникла ошибка при обработке запроса. Повторите попытку')
    }
 })
-router.get('/pdf/:url', async (req, res) => {
-   const url = req.query.url
+router.post('/pdf', async (req, res) => {
+   const url = req.body.url
    try {
-      const data = await hhApi.getPdf(url)
-      logger.info(`GET /hh/pdf/${url}`)
+      const data = await hhApi.getPdf(token, url)
+      logger.info(`GET /hh/pdf`)
       
       res.send(data)
    } catch (error) {
       res.status(500)
-      logger.error(`GET /hh/pdf/${url} \n${error}`)
-      res.send('Возникла ошибка при обработке запроса. Повторите попытку')
+      logger.error(`GET /hh/pdf \n${error}`)
+      res.send(error)
    }
 })
 

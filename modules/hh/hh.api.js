@@ -81,12 +81,20 @@ const hhApi = {
          return error
       }
    },
-   url: async () => {
+   sendMessage: async (token, message, id) => {
+      const res = await hhAxios.post(`/negotiations/${id}/messages?message=${message}`,{}, { headers: {
+         'Authorization': `Bearer ${token}`,
+      }})
+
+      return res.data
+   },
+   url: async (token, url) => {
       try {
          const res = await axios(url, {
             headers: {
                'Content-Type': 'application/json',
-               'User-Agent': 'Recruting (k.timofeeva@vodovoz-spb.ru)'
+               'User-Agent': 'Recruting (k.timofeeva@vodovoz-spb.ru)',
+               'Authorization': `Bearer ${token}`,
             },
          })
    
@@ -109,15 +117,6 @@ const hhApi = {
          return error
       }
    },
-   sendMessage: async (token, message, id) => {
-      const res = await hhAxios.post(`/negotiations/${id}/messages`, {
-         message: message
-      }, { headers: {
-         'Authorization': `Bearer ${token}`,
-      }})
-
-      return res.data
-   }
 }
 
 module.exports = hhApi

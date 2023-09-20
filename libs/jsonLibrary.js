@@ -1,22 +1,29 @@
 const fs = require('fs');
 const path = require('path');
 
-const dataDir = path.join(__dirname, '..', 'data');
+function saveJsonFile(data, dataDir, fileName = null) {
+   let jsonName = ''
+   if(fileName === null) {
+      jsonName = Date.now()
+   } else {
+      jsonName = fileName
+   }
 
-if (!fs.existsSync(dataDir)) {
-   fs.mkdirSync(dataDir);
-}
-
-function saveJsonFile(data) {
    const date = Date.now()
    const jsonContent = {timeCreate: date, ...data}
-   const filePath = path.join(dataDir, date + '.json');
+   const filePath = path.join(dataDir, jsonName + '.json');
    const jsonData = JSON.stringify(jsonContent, null, 2);
 
    fs.writeFileSync(filePath, jsonData);
 }
 
-function getAllJsonData() {
+function getJsonData(dataDir, fileName) {
+   const filePath = path.join(dataDir, `${fileName}.json`);
+   const jsonData = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+   return jsonData
+}
+
+function getAllJsonData(dataDir) {
    const jsonFiles = fs.readdirSync(dataDir)
       .filter(file => file.endsWith('.json'));
 
@@ -31,7 +38,7 @@ function getAllJsonData() {
   return allData;
 }
 
-function addToJsonFile(filename, newData) {
+function updateJsonFile(filename, newData, dataDir) {
    const filePath = path.join(dataDir, `${filename}.json`);
 
    try {
@@ -47,6 +54,7 @@ function addToJsonFile(filename, newData) {
 
 module.exports = {
   saveJsonFile,
+  getJsonData,
   getAllJsonData,
-  addToJsonFile
+  updateJsonFile
 };

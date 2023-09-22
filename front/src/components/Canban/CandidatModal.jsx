@@ -10,11 +10,11 @@ function СandidatModal({ item, isOpen, setIsOpen }) {
       <>
          {isOpen && (
             <div 
-               className="fixed top-0 left-0 flex items-center justify-center bg-opacity-50 h-screen w-screen bg-black cursor-default" 
+               className="fixed top-0 left-0 flex items-center justify-center bg-opacity-50 h-screen w-screen bg-black cursor-default z-50" 
                onClick={closeModal}
             >
                <div 
-                  className="w-[1148px] h-[684px] bg-white overflow-y-scroll"
+                  className="w-[1148px] h-[644px] bg-white overflow-y-scroll"
                   onClick={(event) => event.stopPropagation()}
                >
                   {item.area === 'hh' ? <CandidatHH item={item} /> : <CandidatAvito item={item} />}

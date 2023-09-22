@@ -6,7 +6,7 @@ class HHService {
          const { newAccess, newRefresh } = await hhApi.getJwtInCode(code)
          const date = new Date()
          fs.writeFileSync('tokenHH.txt', `${newAccess}\n${newRefresh}\n${date}`)   
-         return true
+         return { newAccess, newRefresh }
       } catch (error) {
          return error
       }

@@ -1,12 +1,12 @@
 import { memo, useEffect, useState } from "react"
-import { apiHH } from "../../api/api"
+import { apiHH, apiServer } from "../../api/api"
 import PdfViewer from "../pdf/PDF"
 import HhActoins from "./hhActoins"
 import ChatHH from "./Chat/ChatHH"
 import ProjectActions from "./ProjectActions"
 import StageHistory from "./History/StageHistory"
 
-function CandidatHH({ item }) {
+function CandidatHH({ item, setOpen }) {
    const [pdf, setPdf] = useState(null)
    
    const [messageMail, setMessageMail] = useState('')
@@ -34,7 +34,7 @@ function CandidatHH({ item }) {
    }, [])
 
    const pushHistory = async () => {
-      
+      const res = await apiServer.pushHistoryHH(item.data.id, messageHh, messageMail, selectedAction, stage, description)
    }
 
    return (
@@ -56,9 +56,9 @@ function CandidatHH({ item }) {
                description={description} setDescription={setDesctiprion}
             />}
             {item && <StageHistory item={item} />}
-            <button 
+            <button
                className="mt-12 px-4 py-2 text-white bg-green-600 rounded-lg hover:bg-green-700 focus:outline-none"
-               onClick={}
+               onClick={pushHistory}
             >
                Изменить состояние
             </button>

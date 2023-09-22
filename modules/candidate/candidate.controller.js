@@ -3,6 +3,8 @@ const router = express.Router();
 const logger = require('../../libs/logger');
 const CandidateService = require('./candidate.service');
 const { History } = require('./candidate.interface');
+const hhApi = require('../hh/hh.api');
+const { saveJsonFile, getJsonData } = require('../../libs/jsonLibrary');
 
 // Получить всех кандидатов 
 router.get('/', async (req, res) => {
@@ -16,13 +18,30 @@ router.get('/', async (req, res) => {
       res.send(error)
    }
 })
-
-// Добавление истории по названию файла
+// Добавление кандидата с Авито
+router.post('/', async (req, res) => {
+   try {
+      const data = req.body.data
+      const description = req.body.description
+      const user = await CandidateService.addCandidate(data, description)
+      logger.info(`POST /candidate`)
+      res.send(user)
+   } catch (error) {
+      logger.error(`POST /candidate \n ${error}`)
+      res.status(500)
+      res.send(error)
+   }
+})
+// Добавление истории по названию файла в HH
 router.post('/history/:chat_id', async (req, res) => {
    try {
       const body = req.body
       const chatId = req.params.chat_id
       const history = new History(body.stage, body.description)
+      await hhApi.url(token, body.url)
+      await hhApi.sendMessage(token, body.message, chatId)
+      const userHH = hhApi.getNegotiation(token, chatId)
+      await CandidateService.updateUser(chatId, userHH)
       const user = await CandidateService.pushHistory(chatId, history)
       logger.info(`POST /candidate/history/${chatId}`)
 
@@ -34,21 +53,21 @@ router.post('/history/:chat_id', async (req, res) => {
    }
 })
 
-// Изменить телефон
-router.put('/phone/:chat_id', async (req, res) => {
+// Добавление истории в Avito
+router.post('/history/avito/:chat_id', async (req, res) => {
    try {
-      const phone = req.body.phone
+      const body = req.body
       const chatId = req.params.chat_id
-      const user = await CandidateService.updatePhone(chatId, phone)
-      logger.info(`POST /candidate/history/${chatId}`)
+      const history = new History(body.stage, body.description)
+      const user = await CandidateService.pushHistory(chatId, history)
+      logger.info(`POST /candidate/avito/history/${chatId}`)
 
-      res.json(user)
+      res.send(user)
    } catch (error) {
-      logger.error(`POST /candidate/history/${chatId} \n ${error}`)
+      logger.error(`POST /candidate/avito/history/${chatId} \n ${error}`)
       res.status(500)
       res.send(error)
    }
 })
-
 
 module.exports = router 

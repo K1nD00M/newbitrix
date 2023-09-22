@@ -82,11 +82,15 @@ const hhApi = {
       }
    },
    sendMessage: async (token, message, id) => {
-      const res = await hhAxios.post(`/negotiations/${id}/messages?message=${message}`,{}, { headers: {
-         'Authorization': `Bearer ${token}`,
-      }})
-
-      return res.data
+      try {
+         const res = await hhAxios.post(`/negotiations/${id}/messages?message=${message}`,{}, { headers: {
+            'Authorization': `Bearer ${token}`,
+         }})
+   
+         return res.data
+      } catch (error) {
+         return errror
+      }
    },
    url: async (token, url) => {
       try {
@@ -117,6 +121,21 @@ const hhApi = {
          return error
       }
    },
+   updateCandidat: async (token, url, message) => {
+      try {
+         const res = await await axios.put(url, {
+            message,
+            send_sms: true
+         }, {
+            headers: {
+               'Authorization': `Bearer ${token}`,
+               'User-Agent': 'Recruting (k.timofeeva@vodovoz-spb.ru)',
+            },
+         },)
+      } catch (error) {
+         
+      }
+   }
 }
 
 module.exports = hhApi

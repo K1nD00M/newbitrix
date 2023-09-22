@@ -24,9 +24,13 @@ export default function MessagesList() {
    if(messages.length === 0) {
       return <div>В настоящий момент нет непрочитанных сообщений</div>
    }
-   
+
    return (
       <div>
+         <h3 className="font-bold mb-3">В настоящий момент непрочитанно 
+            <span className="bg-green-500 text-white px-1 py-1 rounded-lg mx-1">{messages.length}</span> 
+            сообщений
+         </h3>
          {messages.map(item => (
             <MessageCart 
                chatId={item.chatId}

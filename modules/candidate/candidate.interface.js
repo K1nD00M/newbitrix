@@ -7,12 +7,11 @@ class History {
 }
 
 class Candidate {
-   constructor(data, area, phone='') {
+   constructor(data, area, description='') {
       this.data = data;
       this.area = area
       this.stage = "new";
-      this.history = [new History()];
-      this.phone = phone;
+      this.history = [new History('new', description)];
       this.timeCreate = Date.now();
       this.timeUpdate = Date.now();
    };

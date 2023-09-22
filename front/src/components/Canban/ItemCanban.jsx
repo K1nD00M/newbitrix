@@ -7,6 +7,7 @@ export default function ItemCanban({ item }) {
 
    let firstName = ''
    let lastName = ''
+   let vacancy = ''
    
    const lastItemHistory = item.history[item.history.length - 1];
    const lastDescription = lastItemHistory ? lastItemHistory.description : null;
@@ -16,19 +17,24 @@ export default function ItemCanban({ item }) {
    if(item.area === 'hh') {
       firstName = item.data.resume.first_name
       lastName = item.data.resume.last_name
+      vacancy = item.data.vacancy.name
    } else {
-      firstName = item.data.resume.first_name
-      lastName = item.data.resume.last_name
+      firstName = item.data.name
+      lastName = ''
+      vacancy = item.data.titleVacansy
    }
 
    return (
       <>
-         <div className="p-4 flex flex-col w-80 gap-3 rounded-3xl cursor-pointer"
+         <div className="p-4 flex flex-col w-80 gap-3 rounded-3xl cursor-pointer bg-slate-200"
             onClick={() => setIsOpen(true)}
-         >
+         > 
             <div className="flex justify-between">
+               <h3 className="font-semibold">{vacancy}</h3>
+            </div>
+            <h4 className="opacity-60">{formattedDate}</h4>
+            <div className="flex justify-between ">
                <h3>{firstName + ' ' + lastName}</h3>
-               <h4>{formattedDate}</h4>
             </div>
             <div>
                {lastDescription}

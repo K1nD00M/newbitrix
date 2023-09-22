@@ -1,7 +1,7 @@
 const timeConvert = (time) => {
    const date = new Date(time);
 
-   date.setHours(date.getHours() + 3);
+   date.setHours(date.getHours());
 
    // Получаем день и месяц из объекта Date
    const day = date.getDate();

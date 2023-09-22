@@ -1,4 +1,4 @@
-import { apiAvito } from "../../api/api";
+import { apiAvito, apiServer } from "../../api/api";
 import functionsBX from "../../bx24/functions";
 import { useChatStore } from "../../store/useChatStore";
 import { useMessagesStore } from "../../store/useMessagesStore";
@@ -6,7 +6,7 @@ import Loader from "../UI/Loader";
 import MessageInput from "./ChatInput";
 import { ChatMessage } from "./ChatMessage";
 import { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import DescriptionInput from "./DescriptionInput";
 
 export default function Chat (){
@@ -17,9 +17,9 @@ export default function Chat (){
    const isLoading = useChatStore(state => state.isLoading)
 
    const chats = useMessagesStore(state => state.chats)
+   const getMessages = useMessagesStore(state => state.getChats)
 
    const { chatId } = useParams()
-   const navigate = useNavigate()
 
    const sendNewMessage = (message) => {
       onSendMessage(chatId, message);
@@ -29,39 +29,13 @@ export default function Chat (){
    const [description, setDescription] = useState('')
 
    useEffect(() => {
-      getChat(chatId)
-      setUser(user)
-      apiAvito.readChat(chatId)
+      const viewChat = async () => {
+         if(!chats.length) await getMessages()
+         getChat(chatId)
+         setUser(user)
+      }
+      viewChat()
    }, [])
-
-   const [phone, setPhone] = useState('')
-
-   const onChangePhone = (value) => {
-      setPhone(value)
-   }
-   
-   const addLid = async () => {
-      functionsBX.addLid({
-         phone: phone,
-         title: user.name,
-         area: 'Avito',
-         chatId: user.chatId,
-         userId: user.userId,
-         vacansy: user.titleVacansy,
-         description: description
-      })
-   }
-
-   const addReject = async () => {
-      await functionsBX.addReject({
-         title: user.name,
-         area: 'Avito',
-         chatId: user.chatId,
-         userId: user.userId,
-         vacansy: user.titleVacansy
-      })
-      navigate('/')
-   }
 
    if(isError) {
       return <div>Ошибка</div>
@@ -83,27 +57,19 @@ export default function Chat (){
             ))}
          </div>
          <MessageInput onSendMessage={sendNewMessage} placeholder={"Введите сообщение..."} />
+         <button
+            onClick={() => apiAvito.readChat(chatId)}
+            className={`ml-4 px-4 py-2 text-white bg-green-500 rounded-lg hover:bg-green-600 focus:outline-none mb-4`}
+         >
+            Прочитать сообщение
+         </button>
          <DescriptionInput description={description} setDescription={setDescription} />
-         <div className="flex mt-6">
-            <input 
-               placeholder="Введите номер клиента" 
-               onChange={(event) => onChangePhone(event.target.value)}
-               className="pr-4 pl-2 border-2 border-green-500 border-solid around rounded-md"
-            />
-            <button
-               className={`ml-4 px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none ${!phone && 'opacity-50 hover:bg-blue-500'}`}
-               disabled={!phone}
-               onClick={() => addLid()}
-            >
-               Добавить в собеседуемые
-            </button>
-            <button
-               className="ml-4 px-4 py-2 text-white bg-red-500 rounded-lg hover:bg-red-600 focus:outline-none"
-               onClick={() => addReject()}
-            >
-               Добавить в отказан
-            </button>
-         </div>
+         <button
+            onClick={() => apiServer.addCandidateAvito(user, description)}
+            className={`ml-4 px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none`}
+         >
+            Добавить кандидата 
+         </button>
       </div>
    );
 }

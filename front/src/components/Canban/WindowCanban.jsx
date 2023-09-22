@@ -49,7 +49,7 @@ const WindowCanban = (({ status, candidates }) => {
          <div className={`text-center p-3 text-lg font-bold ${theme[status]}`}>
             {title}
          </div>
-         <div className="flex flex-col w-80 gap-5 bg-slate-200">
+         <div className="flex flex-col w-80 gap-5 pt-4">
             {windowCandidates.map(item => (
                <ItemCanban item={item} key={item.data} />
             ))}

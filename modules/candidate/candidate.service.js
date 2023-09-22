@@ -18,10 +18,10 @@ class CandidateService {
       }
    }
    
-   static async addCandidate(candidateData) {
+   static async addCandidate(candidateData, description) {
       try {
-         const candidate = new Candidate(candidateData, 'avito')
-         saveJsonFile(candidate, dataDir)
+         const candidate = new Candidate(candidateData, 'avito', description)
+         saveJsonFile(candidate, dataDir, candidateData.chatId)
          return candidateData
       } catch (error) {
          return error
@@ -42,10 +42,10 @@ class CandidateService {
       }
    }
 
-   static async updatePhone(filename, phone) {
+   static async updateUser(filename, userData) {
       try {
          const user = getJsonData(dataDir, filename)
-         user.phone = phone
+         user.data = user
          await updateJsonFile(filename, user, dataDir)
 
          return user

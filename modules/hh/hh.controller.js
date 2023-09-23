@@ -4,7 +4,7 @@ const router = express.Router();
 const logger = require('../../libs/logger');
 const hhApi = require('./hh.api');
 
-const token = 'USERKADN9EMRIAHSV8C6B81CLV90ITTDT54MUF1S56T7V7639M3DO8VS5AQ84DAP'
+const token = 'USERQLEJOJIKE8V2MHLL2984K1HS98VPFIRAST1F0F9KR6841N8JM2CBQTFKQH61'
 
 router.get('/query', async (req, res) => {
    const code = req.query.code

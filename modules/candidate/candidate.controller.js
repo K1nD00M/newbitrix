@@ -6,6 +6,8 @@ const { History } = require('./candidate.interface');
 const hhApi = require('../hh/hh.api');
 const { saveJsonFile, getJsonData } = require('../../libs/jsonLibrary');
 
+const token = 'USERQLEJOJIKE8V2MHLL2984K1HS98VPFIRAST1F0F9KR6841N8JM2CBQTFKQH61'
+
 // Получить всех кандидатов 
 router.get('/', async (req, res) => {
    try {

@@ -49,6 +49,7 @@ function CandidatHH({ item, setOpen }) {
                messageMail={messageMail} setMessageMail={setMessageMail} 
                selectedAction={selectedAction} handleActionChange={handleActionChange}
             />}
+            {selectedAction}
             {item && <ChatHH item={item} />}  
             {item && <ProjectActions 
                item={item} 

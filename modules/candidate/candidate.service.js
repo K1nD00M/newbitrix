@@ -28,6 +28,16 @@ class CandidateService {
       }
    }
 
+   static async addCandidateInHh(candidateData) {
+      try {
+         const candidate = new Candidate(candidateData, 'hh')
+         saveJsonFile(candidate, dataDir, candidateData.chatId)
+         return candidateData
+      } catch (error) {
+         return error
+      }
+   }
+
    static async pushHistory(filename, history) {
       try {
          const user = getJsonData(dataDir, filename)

@@ -3,6 +3,7 @@ const HHService = require('./hh.service');
 const router = express.Router();
 const logger = require('../../libs/logger');
 const hhApi = require('./hh.api');
+const CandidateService = require('../candidate/candidate.service');
 
 const token = 'USERQLEJOJIKE8V2MHLL2984K1HS98VPFIRAST1F0F9KR6841N8JM2CBQTFKQH61'
 
@@ -69,6 +70,15 @@ router.post('/pdf', async (req, res) => {
       logger.error(`GET /hh/pdf \n${error}`)
       res.send(error)
    }
+})
+router.post('/new', async (req, res) => {
+   const body = req.body
+   const employerId = body.payload.employer_id
+   const data = await hhApi.getNegotiation(token, employerId)
+
+   CandidateService.addCandidateInHh(data)
+
+   res.send('ok')
 })
 
 module.exports = router

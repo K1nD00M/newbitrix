@@ -76,4 +76,75 @@ const avitoAPI = {
    }
 }
 
-module.exports = { avitoAPI }
+// Для второго аккаунта 
+const avitoApiTwo = {
+   getMessages: async (token) => {
+      try {
+         const req = await avitoAxios('/messenger/v2/accounts/322385838/chats?unread_only=true', {
+            headers: {
+               'Authorization': `Bearer ${token}`,
+            }
+         })
+
+         const messages = req.data.chats
+
+         return messages
+
+      } catch (error) {
+         return error  
+      }
+   },
+   getChat: async (token, chatId) => {
+      try {
+         const req = await avitoAxios(`/messenger/v3/accounts/322385838/chats/${chatId}/messages`, {
+            headers: {
+               'Authorization': `Bearer ${token}`,
+            }
+         })
+         console.log(req)
+
+         const chat = req.data.messages
+
+         return chat
+      } catch (error) {
+         return error
+      }
+   },
+   sendMessage: async (token, chatId, message) => {
+      try {
+         const req = await avitoAxios.post(`/messenger/v1/accounts/322385838/chats/${chatId}/messages`, {
+               "message": {
+                  "text": message
+               },
+               "type": "text"
+            },
+            {
+               headers: {
+                  'Authorization': `Bearer ${token}`,
+               }
+            },
+         )
+
+         return req
+      } catch (error) {
+         return error
+      }
+   },
+   readMessage: async (token, chatId) => {
+      try {
+         const req = await avitoAxios.post(`/messenger/v1/accounts/322385838/chats/${chatId}/read`, {},
+            {
+               headers: {
+                  'Authorization': `Bearer ${token}`,
+               }
+            },
+         )
+
+         return req
+      } catch (error) {
+         return error
+      }
+   }
+}
+
+module.exports = { avitoAPI, avitoApiTwo }

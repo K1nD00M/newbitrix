@@ -1,0 +1,22 @@
+{
+  "timeCreate": 1695562849442,
+  "data": {
+    "chatId": "u2i-8t0~EFHrDEZzRH1tpnZ~SA",
+    "titleVacansy": "Оператор call-центра",
+    "name": "Светлана КононироваПетрова",
+    "userId": 197947398,
+    "avatar": "https://static.avito.ru/stub_avatars/_/14_256x256.png",
+    "lastMessage": "[Системное сообщение] Кандидат откликнулся на вакансию. Его данные сохранились в разделе «Отклики».",
+    "time": 682162
+  },
+  "area": "avito",
+  "stage": "new",
+  "history": [
+    {
+      "stage": "new",
+      "description": "Вроде адекватно все",
+      "time": 1695562849442
+    }
+  ],
+  "timeUpdate": 1695562849442
+}

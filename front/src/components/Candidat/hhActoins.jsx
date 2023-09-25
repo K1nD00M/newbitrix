@@ -33,7 +33,6 @@ export default function HhActoins({item,messageHh, messageMail, setMessageHh, se
             value={messageHh}
             onChange={(event) => setMessageHh(event.target.value)}
             placeholder="Выбите статус кандидата и введите сообщение"
-            disabled={!selectedAction}
          />
       </div>
    )

@@ -13,8 +13,8 @@ export default function Header() {
                SMS
             </Link>
             <div className='flex gap-7'>
-               <Link to={'/hh'}>
-                  HH
+               <Link to={'/avito'}>
+                  Авито C.
                </Link>
                <Link to={'/'}>
                   Авито

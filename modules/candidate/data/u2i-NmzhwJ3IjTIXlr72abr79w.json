@@ -1,0 +1,42 @@
+{
+  "timeCreate": 1695587154514,
+  "data": {
+    "chatId": "u2i-NmzhwJ3IjTIXlr72abr79w",
+    "titleVacansy": "Водитель категории B (авто компании)",
+    "name": "Bekpulat Sobirov",
+    "userId": 239054096,
+    "avatar": "https://72.img.avito.st/avatar/social/256x256/12339502372.jpg",
+    "lastMessage": "[Системное сообщение] Кандидат откликнулся на вакансию. Его данные сохранились в разделе «Отклики».",
+    "time": 3210657
+  },
+  "area": "avito",
+  "stage": "phone",
+  "history": [
+    {
+      "stage": "new",
+      "description": "",
+      "time": 1695587154514
+    },
+    {
+      "stage": "interview",
+      "description": "",
+      "time": 1695587948492
+    },
+    {
+      "stage": "interview",
+      "description": "",
+      "time": 1695587950611
+    },
+    {
+      "stage": "interview",
+      "description": "собес 24.09",
+      "time": 1695588138376
+    },
+    {
+      "stage": "phone",
+      "description": "",
+      "time": 1695588212607
+    }
+  ],
+  "timeUpdate": 1695588212607
+}

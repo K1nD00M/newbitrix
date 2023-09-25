@@ -1,10 +1,11 @@
 import { Routes, Route } from 'react-router-dom'
 import MessagesList from '../components/MessagesList/MessagesList'
 import Chat from '../components/Chat/Chat'
-import CandidatList from '../components/CandidatList/CandidatList'
 import PhoneList from '../components/PhoneList/PhoneList'
 import MessagesHH from '../components/MessagesHH/MessagesHH'
 import Canban from '../components/Canban/Canban'
+import MessagesListTwo from '../components/MessagesList/MessagesListTwo'
+import ChatTwo from '../components/Chat/ChatTwo'
 
 const routerConfig = [
    {
@@ -26,6 +27,14 @@ const routerConfig = [
    {
       path: '/candidates',
       element: <Canban />
+   },
+   {
+      path: '/avito',
+      element: <MessagesListTwo />
+   },
+   {
+      path: '/chat/two/:chatId',
+      element: <ChatTwo />
    }
 ]
 

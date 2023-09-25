@@ -10,13 +10,33 @@
     "time": 3467847
   },
   "area": "avito",
-  "stage": "new",
+  "stage": "rejectCandidate",
   "history": [
     {
       "stage": "new",
       "description": "Интересный кандидат",
       "time": 1695418189842
+    },
+    {
+      "stage": "new",
+      "description": "Интересно....",
+      "time": 1695503088072
+    },
+    {
+      "stage": "new",
+      "description": "Норм чел",
+      "time": 1695503185708
+    },
+    {
+      "stage": "intern",
+      "description": "Идем на стажировку",
+      "time": 1695503229159
+    },
+    {
+      "stage": "rejectCandidate",
+      "description": "Кристина Владимировна очень зла",
+      "time": 1695503256477
     }
   ],
-  "timeUpdate": 1695418189842
+  "timeUpdate": 1695503256477
 }

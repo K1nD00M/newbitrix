@@ -45,7 +45,7 @@ class CandidateService {
    static async updateUser(filename, userData) {
       try {
          const user = getJsonData(dataDir, filename)
-         user.data = user
+         user.data = userData
          await updateJsonFile(filename, user, dataDir)
 
          return user

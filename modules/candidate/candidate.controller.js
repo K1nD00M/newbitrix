@@ -36,13 +36,14 @@ router.post('/', async (req, res) => {
 })
 // Добавление истории по названию файла в HH
 router.post('/history/:chat_id', async (req, res) => {
+   const chatId = req.params.chat_id
    try {
       const body = req.body
-      const chatId = req.params.chat_id
       const history = new History(body.stage, body.description)
       await hhApi.url(token, body.url)
-      await hhApi.sendMessage(token, body.message, chatId)
-      const userHH = hhApi.getNegotiation(token, chatId)
+      await hhApi.sendMessage(token, body.messageHh, chatId)
+      const userHH = await hhApi.getNegotiation(token, chatId)
+      console.log(userHH)
       await CandidateService.updateUser(chatId, userHH)
       const user = await CandidateService.pushHistory(chatId, history)
       logger.info(`POST /candidate/history/${chatId}`)

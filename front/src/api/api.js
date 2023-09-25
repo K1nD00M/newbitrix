@@ -23,7 +23,7 @@ const apiServer = {
          description
       })
 
-      return res.data
+      return res
    },
    addCandidateAvito: async (data, description) => {
       try {
@@ -171,4 +171,51 @@ const apiAvito = {
    }
 }
 
-export { apiAvito, apiHH, apiServer }
+const apiAvitoTwo = {
+   getMessages: async () => {
+      try {
+         const res = await axiosApi('/avito/two/messages')
+
+         const messages = res.data
+
+         return messages
+      } catch (error) {
+         return error
+      }
+   },
+   getChat: async (chatId) => {
+      try {
+         const res = await axiosApi(`/avito/two/messages/${chatId}`)
+
+         const chat = res.data
+
+         return chat
+      } catch (error) {
+         return error
+      }
+   },
+   sendMessage: async (chatId, message) => {
+      try {
+         const res = await axiosApi.post(`/avito/two/messages/${chatId}`, {
+            message
+         })
+
+         const chat = res.data
+
+         return chat
+      } catch (error) {
+         return { status: 'error' }
+      }
+   },
+   readChat: async (chatId) => {
+      try {
+         const res = await axiosApi.post(`/avito/two/messages/read/${chatId}`)
+         if (res.status !== 500) return 'ok'
+      } catch (error) {
+         return { status: 'error' }
+      }
+   }
+}
+
+
+export { apiAvito, apiAvitoTwo, apiHH, apiServer }

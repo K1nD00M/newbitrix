@@ -1,5 +1,10 @@
 const avitoMiddleware = {
    updateMessage: function (message) {
+      let isNorth = false
+      if(message.users[1].id === 322385838) {
+         isNorth = true
+      }
+
       const chatId = message.id
       const titleVacansy = message.context.value.title
       const name = message.users[0].name
@@ -15,7 +20,8 @@ const avitoMiddleware = {
          userId,
          avatar,
          lastMessage,
-         time
+         time,
+         isNorth
       }
    },
 }

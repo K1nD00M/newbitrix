@@ -2,11 +2,11 @@
   "data": {
     "id": "3452143708",
     "state": {
-      "id": "response",
-      "name": "Отклик"
+      "id": "invitation",
+      "name": "Приглашение"
     },
     "created_at": "2023-09-20T00:06:53+0300",
-    "updated_at": "2023-09-20T00:06:53+0300",
+    "updated_at": "2023-09-24T23:36:28+0300",
     "resume": {
       "last_name": "Шамагин",
       "first_name": "Максим",
@@ -90,11 +90,11 @@
       "viewed": false,
       "marked": false
     },
-    "viewed_by_opponent": true,
+    "viewed_by_opponent": false,
     "has_updates": false,
     "messages_url": "https://api.hh.ru/negotiations/3452143708/messages",
     "counters": {
-      "messages": 0,
+      "messages": 24,
       "unread_messages": 0
     },
     "chat_states": {
@@ -106,8 +106,8 @@
     "chat_id": 3449225318,
     "messaging_status": "ok",
     "employer_state": {
-      "id": "response",
-      "name": "Отклик"
+      "id": "phone_interview",
+      "name": "Тел. интервью"
     },
     "vacancy": {
       "id": "86183909",
@@ -176,15 +176,27 @@
     },
     "templates": [
       {
-        "id": "consider",
-        "url": "https://api.hh.ru/message_templates/consider?topic_id=3452143708",
-        "name": "Приглашение на этап Подумать",
+        "id": "hired",
+        "url": "https://api.hh.ru/message_templates/hired?topic_id=3452143708",
+        "name": "Приглашение на Выход на работу",
         "quick": false
       },
       {
         "id": "offer",
         "url": "https://api.hh.ru/message_templates/offer?topic_id=3452143708",
         "name": "Приглашение на Предложение о работе",
+        "quick": false
+      },
+      {
+        "id": "discard_after_interview",
+        "url": "https://api.hh.ru/message_templates/discard_after_interview?topic_id=3452143708",
+        "name": "Отказ",
+        "quick": false
+      },
+      {
+        "id": "discard_after_response",
+        "url": "https://api.hh.ru/message_templates/discard_after_response?topic_id=3452143708",
+        "name": "Отказ откликнувшемуся на вакансию соискателю",
         "quick": false
       },
       {
@@ -206,42 +218,30 @@
         "quick": false
       },
       {
-        "id": "hired",
-        "url": "https://api.hh.ru/message_templates/hired?topic_id=3452143708",
-        "name": "Приглашение на Выход на работу",
-        "quick": false
-      },
-      {
         "id": "assessment_owner_tool",
         "url": "https://api.hh.ru/message_templates/assessment_owner_tool?topic_id=3452143708",
         "name": "Приглашение на Оценку (свой инструмент оценки)",
         "quick": false
       },
       {
-        "id": "discard_after_interview",
-        "url": "https://api.hh.ru/message_templates/discard_after_interview?topic_id=3452143708",
-        "name": "Отказ",
-        "quick": false
-      },
-      {
-        "id": "discard_after_response",
-        "url": "https://api.hh.ru/message_templates/discard_after_response?topic_id=3452143708",
-        "name": "Отказ откликнувшемуся на вакансию соискателю",
+        "id": "consider",
+        "url": "https://api.hh.ru/message_templates/consider?topic_id=3452143708",
+        "name": "Приглашение на этап Подумать",
         "quick": false
       }
     ],
     "actions": [
       {
-        "id": "consider",
-        "name": "Подумать",
+        "id": "hired",
+        "name": "Выход на работу",
         "method": "PUT",
         "enabled": true,
-        "url": "https://api.hh.ru/negotiations/consider/3452143708",
+        "url": "https://api.hh.ru/negotiations/hired/3452143708",
         "templates": [
           {
-            "id": "consider",
-            "url": "https://api.hh.ru/message_templates/consider?topic_id=3452143708",
-            "name": "Приглашение на этап Подумать",
+            "id": "hired",
+            "url": "https://api.hh.ru/message_templates/hired?topic_id=3452143708",
+            "name": "Приглашение на Выход на работу",
             "quick": false
           }
         ],
@@ -259,11 +259,20 @@
                 "id": "message"
               }
             ]
+          },
+          {
+            "id": "address_id",
+            "required": false,
+            "required_arguments": [
+              {
+                "id": "message"
+              }
+            ]
           }
         ],
         "resulting_employer_state": {
-          "id": "consider",
-          "name": "Подумать"
+          "id": "hired",
+          "name": "Выход на работу"
         }
       },
       {
@@ -299,6 +308,38 @@
         "resulting_employer_state": {
           "id": "offer",
           "name": "Предложение о работе"
+        }
+      },
+      {
+        "id": "discard_by_employer",
+        "name": "Отказ",
+        "method": "PUT",
+        "enabled": true,
+        "url": "https://api.hh.ru/negotiations/discard_by_employer/3452143708",
+        "templates": [
+          {
+            "id": "discard_after_interview",
+            "url": "https://api.hh.ru/message_templates/discard_after_interview?topic_id=3452143708",
+            "name": "Отказ",
+            "quick": false
+          },
+          {
+            "id": "discard_after_response",
+            "url": "https://api.hh.ru/message_templates/discard_after_response?topic_id=3452143708",
+            "name": "Отказ откликнувшемуся на вакансию соискателю",
+            "quick": false
+          }
+        ],
+        "arguments": [
+          {
+            "id": "message",
+            "required": false,
+            "required_arguments": []
+          }
+        ],
+        "resulting_employer_state": {
+          "id": "discard_by_employer",
+          "name": "Отказано"
         }
       },
       {
@@ -396,50 +437,6 @@
         }
       },
       {
-        "id": "hired",
-        "name": "Выход на работу",
-        "method": "PUT",
-        "enabled": true,
-        "url": "https://api.hh.ru/negotiations/hired/3452143708",
-        "templates": [
-          {
-            "id": "hired",
-            "url": "https://api.hh.ru/message_templates/hired?topic_id=3452143708",
-            "name": "Приглашение на Выход на работу",
-            "quick": false
-          }
-        ],
-        "arguments": [
-          {
-            "id": "message",
-            "required": false,
-            "required_arguments": []
-          },
-          {
-            "id": "send_sms",
-            "required": false,
-            "required_arguments": [
-              {
-                "id": "message"
-              }
-            ]
-          },
-          {
-            "id": "address_id",
-            "required": false,
-            "required_arguments": [
-              {
-                "id": "message"
-              }
-            ]
-          }
-        ],
-        "resulting_employer_state": {
-          "id": "hired",
-          "name": "Выход на работу"
-        }
-      },
-      {
         "id": "assessment",
         "name": "Оценка",
         "method": "PUT",
@@ -475,22 +472,16 @@
         }
       },
       {
-        "id": "discard_by_employer",
-        "name": "Отказ",
+        "id": "consider",
+        "name": "Подумать",
         "method": "PUT",
         "enabled": true,
-        "url": "https://api.hh.ru/negotiations/discard_by_employer/3452143708",
+        "url": "https://api.hh.ru/negotiations/consider/3452143708",
         "templates": [
           {
-            "id": "discard_after_interview",
-            "url": "https://api.hh.ru/message_templates/discard_after_interview?topic_id=3452143708",
-            "name": "Отказ",
-            "quick": false
-          },
-          {
-            "id": "discard_after_response",
-            "url": "https://api.hh.ru/message_templates/discard_after_response?topic_id=3452143708",
-            "name": "Отказ откликнувшемуся на вакансию соискателю",
+            "id": "consider",
+            "url": "https://api.hh.ru/message_templates/consider?topic_id=3452143708",
+            "name": "Приглашение на этап Подумать",
             "quick": false
           }
         ],
@@ -499,23 +490,47 @@
             "id": "message",
             "required": false,
             "required_arguments": []
+          },
+          {
+            "id": "send_sms",
+            "required": false,
+            "required_arguments": [
+              {
+                "id": "message"
+              }
+            ]
           }
         ],
         "resulting_employer_state": {
-          "id": "discard_by_employer",
-          "name": "Отказано"
+          "id": "consider",
+          "name": "Подумать"
         }
       }
     ]
   },
   "area": "hh",
-  "stage": "Телефонное интервью",
+  "stage": "ok",
   "history": [
     {
-      "stage": "Телефонное интервью",
+      "stage": "new",
       "description": "Интересно",
       "time": 1695423120303
+    },
+    {
+      "stage": "intern",
+      "description": "Кандидат хорошо зарекомендовал себя на собеседование, но имеются некоторые сомнения. Приглашен на стажировку",
+      "time": 1695495021048
+    },
+    {
+      "stage": "ok",
+      "description": "",
+      "time": 1695586944066
+    },
+    {
+      "stage": "ok",
+      "description": "",
+      "time": 1695587787147
     }
   ],
-  "timeUpdate": 1695423120586
+  "timeUpdate": 1695587787679
 }

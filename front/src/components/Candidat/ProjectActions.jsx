@@ -46,7 +46,7 @@ export default function ProjectActions({item, description, setDescription, stage
             onChange={(event) => setStage(event.target.value)}
          >
             {status.map(stat => (
-               <option key={stat.id} >{stat.text}</option>
+               <option value={stat.id} key={stat.id} >{stat.text}</option>
             ))}
          </select>
          <textarea 

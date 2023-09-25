@@ -83,7 +83,7 @@ const hhApi = {
    },
    sendMessage: async (token, message, id) => {
       try {
-         const res = await hhAxios.post(`/negotiations/${id}/messages?message=${message}`,{}, { headers: {
+         const res = await hhAxios.post(`/negotiations/${id}/messages?message=${message}`, {}, { headers: {
             'Authorization': `Bearer ${token}`,
          }})
    
@@ -123,7 +123,7 @@ const hhApi = {
    },
    updateCandidat: async (token, url, message) => {
       try {
-         const res = await await axios.put(url, {
+         const res = await axios.put(url, {
             message,
             send_sms: true
          }, {
@@ -132,8 +132,10 @@ const hhApi = {
                'User-Agent': 'Recruting (k.timofeeva@vodovoz-spb.ru)',
             },
          },)
+
+         return res.data
       } catch (error) {
-         
+         return error
       }
    }
 }

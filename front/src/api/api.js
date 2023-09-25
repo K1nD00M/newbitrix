@@ -39,15 +39,17 @@ const apiServer = {
       const candidates = res.data
       return candidates
    },
-   setInterview: async (candidates, messages, dates) => {
-      axiosApi.post('/interview', {
+   setInterview: async (candidates, messages, dates, phone, area) => {
+      axiosApi.post('/sms', {
          candidates,
          messages,
-         dates
+         dates,
+         phone,
+         area
       })
    },
    getPhones: async () => {
-      const res = await axiosApi('/phone')
+      const res = await axiosApi('/sms')
       const phones = res.data
 
       return phones

@@ -1,36 +1,28 @@
 import functionsBX from "../../bx24/functions";
 
 function dateFormating(dateString) {
-   const moscowTimeZoneOffset = 3 * 60; // Московское время UTC+3
    const date = new Date(dateString);
-  
-   // Применяем смещение временной зоны
-   date.setMinutes(date.getMinutes());
-  
-   const hours = date.getUTCHours().toString().padStart(2, '0');
-   const minutes = date.getUTCMinutes().toString().padStart(2, '0');
-
-   // Получаем день и месяц
-   const day = date.getUTCDate().toString().padStart(2, '0');
-   const month = (date.getUTCMonth() + 1).toString().padStart(2, '0');
-
+ 
+   const hours = date.getHours().toString().padStart(2, '0');
+   const minutes = (date.getMinutes() + 3).toString().padStart(2, '0');
+   const day = date.getDate().toString().padStart(2, '0');
+   const month = (date.getMonth() + 1).toString().padStart(2, '0');
+ 
    const formattedDate = `${hours}:${minutes} ${day}.${month}`;
-
+   
+   
    return formattedDate;
 }
 
-export default function PhoneCard({ info }) {
+export default function PhoneCardAvito({ info }) {
    return (
       <div className="flex flex-col pb-10">
          <div className="flex justify-between p-4 border-b border-gray-300">
             <div className="w-1/4">
-               <h3 className="text-lg font-semibold">{info.candidates.TITLE}</h3>
+               <h3 className="text-lg font-semibold">{info.candidates.data.name}</h3>
             </div>
             <div className="w-1/4">
-               <h3 className="text-lg text-gray-600">{info.candidates.UF_CRM_PHONE}</h3>
-            </div>
-            <div className="w-1/4">
-               <h3 className="text-lg text-gray-600">{info.candidates.UF_CRM_VACANSY}</h3>
+               <h3 className="text-lg text-gray-600">{info.candidates.data.titleVacansy}</h3>
             </div>
          </div>
          <div className="flex flex-col gap-5">

@@ -8,7 +8,8 @@ const smsRouter = require('./modules/sms/sms.controller')
 const tokenObject = require('./modules/avito/avito.access');
 const tokenObjectTwo = require('./modules/avito/avitoTwo.access');
 const cron = require('node-cron');
-const cors = require('cors')
+const cors = require('cors');
+const check = require('./modules/sms/sms.cron');
 app.use(cors());
 
 (async () => {
@@ -18,6 +19,8 @@ app.use(cors());
    cron.schedule('0 0 * * *', () => tokenObject.getNewToken());
    await tokenObjectTwo.readTokenFromFile()
    cron.schedule('0 0 * * *', () => tokenObjectTwo.getNewToken());
+
+   check()
 
    app.use('/hh', hhRouter);
    app.use('/avito', avitoRouter)

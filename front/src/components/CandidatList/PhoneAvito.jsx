@@ -2,13 +2,14 @@ import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import ru from 'date-fns/locale/ru';
-import functionsBX from "../../bx24/functions";
 import { apiServer } from "../../api/api";
 
 export default function PhoneAvito({ candidat }) {
    const [startDate, setStartDate] = useState([new Date()]);
    const [messages, setMessages] = useState([''])
    
+   const [phone, setPhone] = useState('')
+
    const addMessage = () => {
       setStartDate([...startDate, new Date()])
       setMessages([...messages, ''])
@@ -27,35 +28,22 @@ export default function PhoneAvito({ candidat }) {
    };
 
    const setInterview = (candidat) => {
-      apiServer.setInterview(candidat, messages, startDate)
+      apiServer.setInterview(candidat, messages, startDate, phone, 'avito')
    }
 
    return (
       <div className="flex flex-col mb-10">
-         <div className="flex justify-between p-4 border-b border-gray-300">
-            <div className="w-1/4">
-               <h3 className="text-lg font-semibold">{candidat.TITLE}</h3>
-            </div>
-            <div className="w-1/4">
-               <h3 className="text-lg text-gray-600">{candidat.UF_CRM_PHONE}</h3>
-            </div>
-            <div className="w-1/4">
-               <h3 className="text-lg text-gray-600">{candidat.UF_CRM_VACANSY}</h3>
-            </div>
-            <button 
-               onClick={addMessage}
-               className="px-4 py-2 text-white bg-green-600 rounded-lg hover:bg-green-700 focus:outline-none"
-            >
-               Добавить сообщение
-            </button>
-         </div>
-         <div className="flex flex-col">
-            <span className="opacity-70 text-sm mb-2">Описание</span>
+         <div className="p-4 border-b border-gray-300">
             <div>
-               {candidat.DESCRIPTION_CANDIDAT}
+               <input
+                  type="text"
+                  className="flex-grow px-3 py-2 rounded-lg border border-gray-400 focus:outline-none focus:border-blue-500"
+                  placeholder="Введите номер телефона"
+                  value={phone}
+                  onChange={(event) => setPhone(event.target.value)}
+               />
             </div>
          </div>
-         <span className="opacity-70 text-sm mb-2">Описание</span>
          {messages.map((item, index) => (
             <div className="mb-3" key={index}>
                <input
@@ -78,16 +66,24 @@ export default function PhoneAvito({ candidat }) {
                />
             </div>
          ))}   
-         <button 
-            onClick={() => setInterview(candidat, messages, startDate)}
-            className={`
+         <div className="flex justify-between">
+            <button 
+               onClick={addMessage}
+               className="px-4 py-2 text-white bg-green-600 rounded-lg hover:bg-green-700 focus:outline-none"
+            >
+               Добавить сообщение
+            </button>
+            <button 
+               onClick={() => setInterview(candidat, messages, startDate)}
+               className={`
                px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none
                ${messages.includes('') && 'opacity-50 hover:bg-blue-500'}
             `}
-            disabled={messages.includes('')}
-         >
-            Отправить
-         </button>
+               disabled={messages.includes('')}
+            >
+               Отправить
+            </button>
+         </div>  
       </div>
    )
 }

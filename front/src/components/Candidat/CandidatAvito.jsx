@@ -5,6 +5,7 @@ import StageHistory from "./History/StageHistory"
 import ChatAvito from "./Chat/ChatAvito";
 import ChatTwo from "../Chat/ChatTwo";
 import ChatAvitoTwo from "./Chat/ChatAvitoTwo";
+import PhoneAvito from "../CandidatList/PhoneAvito";
 
 function CandidatAvito({ item, setOpen }) {
    const [selectedAction, setSelectedAction] = useState('');
@@ -27,6 +28,7 @@ function CandidatAvito({ item, setOpen }) {
                description={description} setDescription={setDescription} 
                stage={stage}  setStage={setStage}
             />}
+            {item && <PhoneAvito candidat={item} />}
             <button
                className="mt-12 px-4 py-2 text-white bg-green-600 rounded-lg hover:bg-green-700 focus:outline-none"
                onClick={pushHistory}

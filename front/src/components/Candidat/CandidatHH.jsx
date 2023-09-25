@@ -5,6 +5,7 @@ import HhActoins from "./hhActoins"
 import ChatHH from "./Chat/ChatHH"
 import ProjectActions from "./ProjectActions"
 import StageHistory from "./History/StageHistory"
+import PhoneHH from "../CandidatList/PhoneHH"
 
 function CandidatHH({ item, setOpen }) {
    const [pdf, setPdf] = useState(null)
@@ -56,6 +57,7 @@ function CandidatHH({ item, setOpen }) {
                description={description} setDescription={setDesctiprion}
             />}
             {item && <StageHistory item={item} />}
+            {item && <PhoneHH candidat={item} />}
             <button
                className="mt-12 px-4 py-2 text-white bg-green-600 rounded-lg hover:bg-green-700 focus:outline-none"
                onClick={pushHistory}

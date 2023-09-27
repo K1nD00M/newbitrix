@@ -18,12 +18,17 @@ function CandidatHH({ item, setOpen }) {
    const [description, setDesctiprion] = useState('')
 
    const handleActionChange = async (event) => {
-      setSelectedAction(event.target.value);
-      const action = item.data.actions.find(action => action.id === selectedAction)
-      const url = action.templates[0].url
-      const data = await apiHH.command(url)
-      setMessageHh(data.sms.text)
-      setMessageMail(data.mail.text)
+      try {
+         const action = item.data.actions.find(action => action.id === event.target.value)
+         const url = action.templates[0].url
+         const data = await apiHH.command(url)
+         setMessageHh(data.sms.text)
+         setMessageMail(data.mail.text)
+         setSelectedAction(event.target.value);
+      } catch (error) {
+         return 
+      }
+      
    }; 
 
    useEffect(() => {

@@ -8,7 +8,6 @@ const dataDir = path.join(__dirname, 'data');
 
 const check = () => {
    cron.schedule('* * * * *', async () => {
-      console.log('Отработал')
       const messages = getAllJsonData(dataDir)
       const dateNow = new Date()
       messages.filter(async (item) => {

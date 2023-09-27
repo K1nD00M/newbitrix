@@ -72,13 +72,19 @@ router.post('/pdf', async (req, res) => {
    }
 })
 router.post('/new', async (req, res) => {
-   const body = req.body
-   const employerId = body.payload.employer_id
-   const data = await hhApi.getNegotiation(token, employerId)
+   try {
+      const body = req.body
+      const employerId = body.payload.topic_id
+      const data = await hhApi.getNegotiation(token, employerId)
 
-   CandidateService.addCandidateInHh(data)
+      CandidateService.addCandidateInHh(data)
 
-   res.send('ok')
+      res.send('ok')
+   } catch (error) {
+      res.status(500)
+      res.send(error)
+   }
+   
 })
 
 module.exports = router

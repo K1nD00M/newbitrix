@@ -10,7 +10,10 @@ const tokenObjectTwo = require('./modules/avito/avitoTwo.access');
 const cron = require('node-cron');
 const cors = require('cors');
 const check = require('./modules/sms/sms.cron');
+const www = process.env.WWW || './front/dist';
+
 app.use(cors());
+app.use(express.static(www));
 
 (async () => {
    app.use(express.json())
@@ -21,7 +24,12 @@ app.use(cors());
    cron.schedule('0 0 * * *', () => tokenObjectTwo.getNewToken());
 
    check()
-
+   app.get('/', (req, res) => {
+      res.sendFile(`index.html`, { root: www });
+   });
+   app.post('/', (req, res) => {
+      res.sendFile(`index.html`, { root: www });
+   });
    app.use('/hh', hhRouter);
    app.use('/avito', avitoRouter)
    app.use('/avito/two', avitoRouterTwo)

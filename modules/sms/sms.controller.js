@@ -1,7 +1,8 @@
 const express = require('express');
 const { saveJsonFile, getAllJsonData } = require('../../libs/jsonLibrary');
 const router = express.Router();
-const path = require('path')
+const path = require('path');
+const apiWhatsapp = require('./api/apiWhatsapp');
 
 const dataDir = path.join(__dirname, 'data');
 
@@ -16,5 +17,16 @@ router.post('/', async (req, res) => {
    
    res.send('OK')
 });
+router.get('/chat', async (req, res) => {
+   try {
+      const number = req.query.number
+      const messages = await apiWhatsapp.getChat(number)
+      res.send(messages)
+   } catch (error) {
+      res.status(500)
+      res.send(error)
+   }
+});
+
 
 module.exports = router

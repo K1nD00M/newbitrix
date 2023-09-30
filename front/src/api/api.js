@@ -5,11 +5,11 @@ const axiosApi = axios.create({
 })
 
 const apiServer = {
-   pushHistoryHH: async (chatId, messageHh, messageMail, selectedAction, stage, description) => {
+   pushHistoryHH: async (chatId, messageHh, messageMail, url, stage, description) => {
       const res = await axiosApi.post(`/candidates/history/${chatId}`, {
          messageHh,
          messageMail,
-         selectedAction,
+         url,
          stage,
          description
       })
@@ -53,6 +53,16 @@ const apiServer = {
       const phones = res.data
 
       return phones
+   },
+   getChatPhone: async (number) => {
+      try {
+         const res = await axiosApi(`/sms/chat`, {
+            params: {number}
+         })
+         return res.data
+      } catch (error) {
+         return error
+      }
    }
 }
 

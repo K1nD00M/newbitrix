@@ -2,8 +2,6 @@ import { useState } from "react"
 import { apiHH } from "../../api/api";
 
 export default function HhActoins({item,messageHh, messageMail, setMessageHh, setMessageMail, selectedAction, handleActionChange}) {
-   
-   
    return (
       <div className="px-4 mt-8 pb-12">
          <h3 className="text-center font-bold text-xl">Изменить состояние кандидата в HH</h3>

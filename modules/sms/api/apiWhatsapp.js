@@ -22,6 +22,14 @@ const apiWhatsapp = {
       } catch (error) {
          console.log(error)
       }
+   },
+   getChat: async (number) => {
+      try {
+         const res = await axiosWhatsapp(`/sync/messages/get?profile_id=${profileId}&chat_id=${number}`)
+         return res.data
+      } catch (error) {
+         return error
+      }
    }
 }
 

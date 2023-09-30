@@ -6,7 +6,7 @@ import Loader from "../UI/Loader";
 import MessageInput from "./ChatInput";
 import { ChatMessage } from "./ChatMessage";
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import DescriptionInput from "./DescriptionInput";
 
 export default function Chat (){
@@ -20,6 +20,7 @@ export default function Chat (){
    const getMessages = useMessagesStore(state => state.getChats)
 
    const { chatId } = useParams()
+   const navigate = useNavigate()
 
    const sendNewMessage = (message) => {
       onSendMessage(chatId, message);
@@ -27,6 +28,16 @@ export default function Chat (){
 
    const [user, setUser] = useState(chats.find(item => item.chatId === chatId))
    const [description, setDescription] = useState('')
+
+   const pushCandidat = async () => {
+      try {
+         await apiServer.addCandidateAvito(user, description)
+         navigate('/candidates')
+      } catch (error) {
+         console.log(error)
+      }
+      
+   }
 
    useEffect(() => {
       const viewChat = async () => {
@@ -65,7 +76,7 @@ export default function Chat (){
          </button>
          <DescriptionInput description={description} setDescription={setDescription} />
          <button
-            onClick={() => apiServer.addCandidateAvito(user, description)}
+            onClick={() => pushCandidat()}
             className={`ml-4 px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none`}
          >
             Добавить кандидата 

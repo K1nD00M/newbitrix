@@ -41,15 +41,17 @@ const WindowCanban = (({ status, candidates }) => {
 
    useEffect(() => {
       const thisCandidates = candidates.filter(item => item.stage === status)
+      thisCandidates.sort((a,b) => a.timeUpdate < b.timeUpdate ? 1 : -1) 
+      console.log(thisCandidates)
       setWindowCandidates(thisCandidates)
    }, [candidates, status])
 
    return (
-      <div>
-         <div className={`text-center p-3 text-lg font-bold ${theme[status]}`}>
+      <div className="">
+         <div className={`w-full text-center p-3 text-lg font-bold ${theme[status]}`}>
             {title}
          </div>
-         <div className="flex flex-col w-80 gap-5 pt-4">
+         <div className="flex flex-col gap-5 w-80 pt-4 overflow-y-scroll h-full">
             {windowCandidates.map(item => (
                <ItemCanban item={item} key={item.data} />
             ))}

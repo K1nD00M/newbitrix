@@ -89,7 +89,7 @@ const hhApi = {
    
          return res.data
       } catch (error) {
-         return errror
+         return error
       }
    },
    url: async (token, url) => {

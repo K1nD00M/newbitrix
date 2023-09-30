@@ -3,6 +3,7 @@ import { apiServer } from "../../api/api"
 import PhoneCard from "./PhoneCard"
 import PhoneCardHH from "./PhoneCardHH"
 import PhoneCardAvito from "./PhoneCardAvito"
+import PhoneChat from "./PhoneChat"
 
 export default function PhoneList() {
    const [phones, setPhones] = useState([])
@@ -28,10 +29,20 @@ export default function PhoneList() {
       <div>
          {phones.map((item, index) => {
             if(item.area === 'hh') {
-               return (<PhoneCardHH info={item} key={index} />)
+               return (
+                  <div key={index}>
+                     <PhoneCardHH info={item} />
+                     <PhoneChat number={item.number} />
+                  </div>
+               )
             } 
             else{
-               return (<PhoneCardAvito info={item} key={index} />)
+               return (
+                  <div key={index}>
+                     <PhoneCardAvito info={item}  />
+                     <PhoneChat number={item.phone} />
+                  </div>
+               )
             }
          })}
       </div>

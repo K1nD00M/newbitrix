@@ -17,7 +17,7 @@ function СandidatModal({ item, isOpen, setIsOpen }) {
                   className="w-[1148px] h-[644px] bg-white overflow-y-scroll"
                   onClick={(event) => event.stopPropagation()}
                >
-                  {item.area === 'hh' ? <CandidatHH item={item} /> : <CandidatAvito item={item} />}
+                  {item.area === 'hh' ? <CandidatHH item={item} setOpen={setIsOpen}/> : <CandidatAvito item={item} setOpen={setIsOpen} />}
                </div>
             </div>
          )}

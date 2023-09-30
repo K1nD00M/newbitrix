@@ -1,0 +1,38 @@
+{
+  "timeCreate": 1695933866219,
+  "data": {
+    "chatId": "u2i-1CeY0E5MiWwGo4lMTGOlSw",
+    "titleVacansy": "Диспетчер на телефон",
+    "name": "Лолита",
+    "userId": 513431229,
+    "avatar": "https://static.avito.ru/stub_avatars/_/14_256x256.png",
+    "lastMessage": "Здравствуйте!",
+    "time": 3030070,
+    "isNorth": true
+  },
+  "area": "avito",
+  "stage": "thinks",
+  "history": [
+    {
+      "stage": "new",
+      "description": "Вроде все ок",
+      "time": 1695933866219
+    },
+    {
+      "stage": "new",
+      "description": "C Лолой все нормально",
+      "time": 1695934075141
+    },
+    {
+      "stage": "phone",
+      "description": "C Лолой все нормально",
+      "time": 1695934092959
+    },
+    {
+      "stage": "thinks",
+      "description": "Все устраивает. Но надо поломаться чуть",
+      "time": 1695934250223
+    }
+  ],
+  "timeUpdate": 1695934250223
+}

@@ -1,0 +1,23 @@
+{
+  "timeCreate": 1695933720418,
+  "data": {
+    "chatId": "u2i-pgF2GkXfFJN0rob9cDjf_g",
+    "titleVacansy": "Водитель-экспедитор. Категория В",
+    "name": "Рустам",
+    "userId": 535288461,
+    "avatar": "https://70.img.avito.st/avatar/social/256x256/21607313270.jpg",
+    "lastMessage": "Здравствуйте у вас есть машина",
+    "time": 4117562,
+    "isNorth": false
+  },
+  "area": "avito",
+  "stage": "new",
+  "history": [
+    {
+      "stage": "new",
+      "description": "",
+      "time": 1695933720418
+    }
+  ],
+  "timeUpdate": 1695933720418
+}

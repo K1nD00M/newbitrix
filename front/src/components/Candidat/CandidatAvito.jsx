@@ -15,6 +15,7 @@ function CandidatAvito({ item, setOpen }) {
 
    const pushHistory = async () => {
       const res = await apiServer.pushHistoryAvito(item.data.chatId, selectedAction, stage, description)
+      setOpen(false)
    }
 
    return (
@@ -24,6 +25,7 @@ function CandidatAvito({ item, setOpen }) {
             
          </div>
          <div className="">
+            <span className='text-blue-600 cursor-pointer' onClick={() => setOpen(false)}>Вернуться назад</span>
             {item && <ProjectActions item={item}
                description={description} setDescription={setDescription} 
                stage={stage}  setStage={setStage}

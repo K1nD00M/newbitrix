@@ -19,12 +19,14 @@ function CandidatHH({ item, setOpen }) {
 
    const handleActionChange = async (event) => {
       try {
-         const action = item.data.actions.find(action => action.id === event.target.value)
+         const actionName = event.target.value
+         const action = item.data.actions.find(action => action.id === actionName)
+         console.log(event.target.value)
          const url = action.templates[0].url
          const data = await apiHH.command(url)
          setMessageHh(data.sms.text)
          setMessageMail(data.mail.text)
-         setSelectedAction(event.target.value);
+         setSelectedAction(actionName);
       } catch (error) {
          return 
       }
@@ -40,15 +42,19 @@ function CandidatHH({ item, setOpen }) {
    }, [])
 
    const pushHistory = async () => {
-      const res = await apiServer.pushHistoryHH(item.data.id, messageHh, messageMail, selectedAction, stage, description)
+      const personAction = item.data.actions.find(action => action.id === selectedAction)
+      const url = personAction.url
+      const res = await apiServer.pushHistoryHH(item.data.id, messageHh, messageMail, url, stage, description)
+      setOpen(false)
    }
-
    return (
       <div className="py-12 flex ">
          <div className="w-2/3">
             {pdf && <PdfViewer pdfData={pdf} />}
          </div>
          <div className="">
+            <span className='text-blue-600 cursor-pointer
+             ' onClick={() => setOpen(false)}>Вернуться назад</span>
             {item && <HhActoins 
                item={item} 
                messageHh={messageHh} setMessageHh={setMessageHh} 

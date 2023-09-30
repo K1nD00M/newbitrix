@@ -1,0 +1,37 @@
+{
+  "timeCreate": 1695934069991,
+  "candidates": {
+    "timeCreate": 1695933866219,
+    "data": {
+      "chatId": "u2i-1CeY0E5MiWwGo4lMTGOlSw",
+      "titleVacansy": "Диспетчер на телефон",
+      "name": "Лолита",
+      "userId": 513431229,
+      "avatar": "https://static.avito.ru/stub_avatars/_/14_256x256.png",
+      "lastMessage": "Здравствуйте!",
+      "time": 3030070,
+      "isNorth": true
+    },
+    "area": "avito",
+    "stage": "new",
+    "history": [
+      {
+        "stage": "new",
+        "description": "Вроде все ок",
+        "time": 1695933866219
+      }
+    ],
+    "timeUpdate": 1695933866219
+  },
+  "messages": [
+    "Тест"
+  ],
+  "dates": [
+    "2023-09-28T20:50:00.000Z"
+  ],
+  "phone": "89525234204",
+  "area": "avito",
+  "isSend": [
+    true
+  ]
+}

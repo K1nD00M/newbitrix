@@ -5,16 +5,18 @@ import { useState } from "react"
 
 export default function Canban() {
    const [candidates, setCandidates] = useState([])
+   const [isGetNewCandidates] = useState(true)
    useEffect(() => {
       const getCandidates = async () => {
          const candidates = await apiServer.getCandidates()
          setCandidates(candidates)
+         isGetNewCandidates(false)
       }
-      getCandidates()
-   }, [])
+      if(isGetNewCandidates) getCandidates()
+   }, [isGetNewCandidates])
 
    return (
-      <div className="flex overflow-x-scroll gap-10 bg-slate-100 p-6">
+      <div className="flex overflow-x-scroll gap-10 bg-slate-100 p-6 h-full">
          <WindowCanban status={'new'} candidates={candidates} />
          <WindowCanban status={'phone'} candidates={candidates} />
          <WindowCanban status={'interview'} candidates={candidates} />

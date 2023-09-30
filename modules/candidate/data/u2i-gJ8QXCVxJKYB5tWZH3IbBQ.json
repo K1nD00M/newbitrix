@@ -1,0 +1,23 @@
+{
+  "timeCreate": 1695933816007,
+  "data": {
+    "chatId": "u2i-gJ8QXCVxJKYB5tWZH3IbBQ",
+    "titleVacansy": "Оператор call-центра в офисе 2/3",
+    "name": "Карина",
+    "userId": 207280521,
+    "avatar": "https://static.avito.ru/stub_avatars/_/14_256x256.png",
+    "lastMessage": "Здравствуйте! А в каком районе вакансия открыта?",
+    "time": 743514,
+    "isNorth": true
+  },
+  "area": "avito",
+  "stage": "new",
+  "history": [
+    {
+      "stage": "new",
+      "description": "",
+      "time": 1695933816007
+    }
+  ],
+  "timeUpdate": 1695933816007
+}

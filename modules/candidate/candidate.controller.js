@@ -40,11 +40,12 @@ router.post('/history/:chat_id', async (req, res) => {
    try {
       const body = req.body
       const history = new History(body.stage, body.description)
-      await hhApi.url(token, body.url)
-      await hhApi.sendMessage(token, body.messageHh, chatId)
-      const userHH = await hhApi.getNegotiation(token, chatId)
-      console.log(userHH)
-      await CandidateService.updateUser(chatId, userHH)
+      if(body.url) {
+         await hhApi.url(token, body.url)
+         await hhApi.sendMessage(token, body.messageHh, chatId)
+         const userHH = await hhApi.getNegotiation(token, chatId)
+         await CandidateService.updateUser(chatId, userHH)
+      }
       const user = await CandidateService.pushHistory(chatId, history)
       logger.info(`POST /candidate/history/${chatId}`)
 

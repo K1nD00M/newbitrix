@@ -21,7 +21,6 @@ function CandidatHH({ item, setOpen }) {
       try {
          const actionName = event.target.value
          const action = item.data.actions.find(action => action.id === actionName)
-         console.log(event.target.value)
          const url = action.templates[0].url
          const data = await apiHH.command(url)
          setMessageHh(data.sms.text)
@@ -43,7 +42,10 @@ function CandidatHH({ item, setOpen }) {
 
    const pushHistory = async () => {
       const personAction = item.data.actions.find(action => action.id === selectedAction)
-      const url = personAction.url
+      let url = ''
+      if(personAction) {
+         let url = personAction.url
+      }
       const res = await apiServer.pushHistoryHH(item.data.id, messageHh, messageMail, url, stage, description)
       setOpen()
    }

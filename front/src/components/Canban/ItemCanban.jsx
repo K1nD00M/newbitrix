@@ -1,9 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CandidatModal from "./CandidatModal";
 import { timeConvert } from "../../lib/timeConvert";
 
-export default function ItemCanban({ item }) {
+export default function ItemCanban({ item, isGetNewCandidates }) {
    const [isOpen, setIsOpen] = useState(false)
+
+   const closeAndGetCandidate = (newValue = true) => {
+      if(!newValue) {
+         setIsOpen(false)
+      } else {
+         console.log(321)
+         setIsOpen(false)
+         isGetNewCandidates(true)
+      }
+      
+   }
 
    let firstName = ''
    let lastName = ''
@@ -44,7 +55,7 @@ export default function ItemCanban({ item }) {
             </div>
          </div>
       
-         <CandidatModal item={item} isOpen={isOpen} setIsOpen={setIsOpen} />
+         <CandidatModal item={item} isOpen={isOpen} setIsOpen={closeAndGetCandidate} />
       </>
    )
 }

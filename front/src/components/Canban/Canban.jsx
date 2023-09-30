@@ -5,27 +5,28 @@ import { useState } from "react"
 
 export default function Canban() {
    const [candidates, setCandidates] = useState([])
-   const [isGetNewCandidates] = useState(true)
+   const [isGetNewCandidates, setIsGetNewCandidates] = useState(true)
+
    useEffect(() => {
       const getCandidates = async () => {
          const candidates = await apiServer.getCandidates()
          setCandidates(candidates)
-         isGetNewCandidates(false)
+         setIsGetNewCandidates(false)
       }
       if(isGetNewCandidates) getCandidates()
    }, [isGetNewCandidates])
 
    return (
       <div className="flex overflow-x-scroll gap-10 bg-slate-100 p-6 h-full">
-         <WindowCanban status={'new'} candidates={candidates} />
-         <WindowCanban status={'phone'} candidates={candidates} />
-         <WindowCanban status={'interview'} candidates={candidates} />
-         <WindowCanban status={'thinks'} candidates={candidates} />
-         <WindowCanban status={'intern'} candidates={candidates} />
-         <WindowCanban status={'notCome'} candidates={candidates} />
-         <WindowCanban status={'rejectCandidate'} candidates={candidates} />
-         <WindowCanban status={'rejectHr'} candidates={candidates} />
-         <WindowCanban status={'ok'} candidates={candidates} />
+         <WindowCanban status={'new'} candidates={candidates} isGetNewCandidates={setIsGetNewCandidates}/>
+         <WindowCanban status={'phone'} candidates={candidates} isGetNewCandidates={setIsGetNewCandidates}/>
+         <WindowCanban status={'interview'} candidates={candidates} isGetNewCandidates={setIsGetNewCandidates} />
+         <WindowCanban status={'thinks'} candidates={candidates} isGetNewCandidates={setIsGetNewCandidates}/>
+         <WindowCanban status={'intern'} candidates={candidates} isGetNewCandidates={setIsGetNewCandidates}/>
+         <WindowCanban status={'notCome'} candidates={candidates} isGetNewCandidates={setIsGetNewCandidates}/>
+         <WindowCanban status={'rejectCandidate'} candidates={candidates} isGetNewCandidates={setIsGetNewCandidates}/>
+         <WindowCanban status={'rejectHr'} candidates={candidates} isGetNewCandidates={setIsGetNewCandidates}/>
+         <WindowCanban status={'ok'} candidates={candidates} isGetNewCandidates={setIsGetNewCandidates}/>
       </div>
    )
 }

@@ -15,7 +15,7 @@ function CandidatAvito({ item, setOpen }) {
 
    const pushHistory = async () => {
       const res = await apiServer.pushHistoryAvito(item.data.chatId, selectedAction, stage, description)
-      setOpen(false)
+      setOpen()
    }
 
    return (

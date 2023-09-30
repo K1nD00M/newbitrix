@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import ItemCanban from "./ItemCanban";
 
-const WindowCanban = (({ status, candidates }) => {
+const WindowCanban = (({ status, candidates, isGetNewCandidates }) => {
    const [windowCandidates, setWindowCandidates] = useState([])
 
    const theme = {
@@ -42,7 +42,6 @@ const WindowCanban = (({ status, candidates }) => {
    useEffect(() => {
       const thisCandidates = candidates.filter(item => item.stage === status)
       thisCandidates.sort((a,b) => a.timeUpdate < b.timeUpdate ? 1 : -1) 
-      console.log(thisCandidates)
       setWindowCandidates(thisCandidates)
    }, [candidates, status])
 
@@ -51,9 +50,9 @@ const WindowCanban = (({ status, candidates }) => {
          <div className={`w-full text-center p-3 text-lg font-bold ${theme[status]}`}>
             {title}
          </div>
-         <div className="flex flex-col gap-5 w-80 pt-4 overflow-y-scroll h-full">
+         <div className="flex flex-col gap-5 pt-4 overflow-y-scroll h-full">
             {windowCandidates.map(item => (
-               <ItemCanban item={item} key={item.data} />
+               <ItemCanban item={item} key={item.data} isGetNewCandidates={isGetNewCandidates} />
             ))}
          </div>
       </div>

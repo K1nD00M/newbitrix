@@ -44,7 +44,7 @@ function CandidatHH({ item, setOpen }) {
       const personAction = item.data.actions.find(action => action.id === selectedAction)
       let url = ''
       if(personAction) {
-         let url = personAction.url
+         url = personAction.url
       }
       const res = await apiServer.pushHistoryHH(item.data.id, messageHh, messageMail, url, stage, description)
       setOpen()

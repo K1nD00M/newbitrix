@@ -6,7 +6,7 @@
       "name": "Приглашение"
     },
     "created_at": "2023-09-20T00:06:53+0300",
-    "updated_at": "2023-09-28T23:58:13+0300",
+    "updated_at": "2023-10-02T00:55:28+0300",
     "resume": {
       "last_name": "Шамагин",
       "first_name": "Максим",
@@ -94,7 +94,7 @@
     "has_updates": false,
     "messages_url": "https://api.hh.ru/negotiations/3452143708/messages",
     "counters": {
-      "messages": 27,
+      "messages": 34,
       "unread_messages": 0
     },
     "chat_states": {
@@ -176,33 +176,9 @@
     },
     "templates": [
       {
-        "id": "discard_after_interview",
-        "url": "https://api.hh.ru/message_templates/discard_after_interview?topic_id=3452143708",
-        "name": "Отказ",
-        "quick": false
-      },
-      {
-        "id": "discard_after_response",
-        "url": "https://api.hh.ru/message_templates/discard_after_response?topic_id=3452143708",
-        "name": "Отказ откликнувшемуся на вакансию соискателю",
-        "quick": false
-      },
-      {
-        "id": "hired",
-        "url": "https://api.hh.ru/message_templates/hired?topic_id=3452143708",
-        "name": "Приглашение на Выход на работу",
-        "quick": false
-      },
-      {
         "id": "consider",
         "url": "https://api.hh.ru/message_templates/consider?topic_id=3452143708",
         "name": "Приглашение на этап Подумать",
-        "quick": false
-      },
-      {
-        "id": "assessment_owner_tool",
-        "url": "https://api.hh.ru/message_templates/assessment_owner_tool?topic_id=3452143708",
-        "name": "Приглашение на Оценку (свой инструмент оценки)",
         "quick": false
       },
       {
@@ -228,85 +204,33 @@
         "url": "https://api.hh.ru/message_templates/interview?topic_id=3452143708",
         "name": "Приглашение на Интервью",
         "quick": false
-      }
-    ],
-    "actions": [
-      {
-        "id": "discard_by_employer",
-        "name": "Отказ",
-        "method": "PUT",
-        "enabled": true,
-        "url": "https://api.hh.ru/negotiations/discard_by_employer/3452143708",
-        "templates": [
-          {
-            "id": "discard_after_interview",
-            "url": "https://api.hh.ru/message_templates/discard_after_interview?topic_id=3452143708",
-            "name": "Отказ",
-            "quick": false
-          },
-          {
-            "id": "discard_after_response",
-            "url": "https://api.hh.ru/message_templates/discard_after_response?topic_id=3452143708",
-            "name": "Отказ откликнувшемуся на вакансию соискателю",
-            "quick": false
-          }
-        ],
-        "arguments": [
-          {
-            "id": "message",
-            "required": false,
-            "required_arguments": []
-          }
-        ],
-        "resulting_employer_state": {
-          "id": "discard_by_employer",
-          "name": "Отказано"
-        }
       },
       {
         "id": "hired",
-        "name": "Выход на работу",
-        "method": "PUT",
-        "enabled": true,
-        "url": "https://api.hh.ru/negotiations/hired/3452143708",
-        "templates": [
-          {
-            "id": "hired",
-            "url": "https://api.hh.ru/message_templates/hired?topic_id=3452143708",
-            "name": "Приглашение на Выход на работу",
-            "quick": false
-          }
-        ],
-        "arguments": [
-          {
-            "id": "message",
-            "required": false,
-            "required_arguments": []
-          },
-          {
-            "id": "send_sms",
-            "required": false,
-            "required_arguments": [
-              {
-                "id": "message"
-              }
-            ]
-          },
-          {
-            "id": "address_id",
-            "required": false,
-            "required_arguments": [
-              {
-                "id": "message"
-              }
-            ]
-          }
-        ],
-        "resulting_employer_state": {
-          "id": "hired",
-          "name": "Выход на работу"
-        }
+        "url": "https://api.hh.ru/message_templates/hired?topic_id=3452143708",
+        "name": "Приглашение на Выход на работу",
+        "quick": false
       },
+      {
+        "id": "assessment_owner_tool",
+        "url": "https://api.hh.ru/message_templates/assessment_owner_tool?topic_id=3452143708",
+        "name": "Приглашение на Оценку (свой инструмент оценки)",
+        "quick": false
+      },
+      {
+        "id": "discard_after_interview",
+        "url": "https://api.hh.ru/message_templates/discard_after_interview?topic_id=3452143708",
+        "name": "Отказ",
+        "quick": false
+      },
+      {
+        "id": "discard_after_response",
+        "url": "https://api.hh.ru/message_templates/discard_after_response?topic_id=3452143708",
+        "name": "Отказ откликнувшемуся на вакансию соискателю",
+        "quick": false
+      }
+    ],
+    "actions": [
       {
         "id": "consider",
         "name": "Подумать",
@@ -340,41 +264,6 @@
         "resulting_employer_state": {
           "id": "consider",
           "name": "Подумать"
-        }
-      },
-      {
-        "id": "assessment",
-        "name": "Оценка",
-        "method": "PUT",
-        "enabled": true,
-        "url": "https://api.hh.ru/negotiations/assessment/3452143708",
-        "templates": [
-          {
-            "id": "assessment_owner_tool",
-            "url": "https://api.hh.ru/message_templates/assessment_owner_tool?topic_id=3452143708",
-            "name": "Приглашение на Оценку (свой инструмент оценки)",
-            "quick": false
-          }
-        ],
-        "arguments": [
-          {
-            "id": "message",
-            "required": false,
-            "required_arguments": []
-          },
-          {
-            "id": "send_sms",
-            "required": false,
-            "required_arguments": [
-              {
-                "id": "message"
-              }
-            ]
-          }
-        ],
-        "resulting_employer_state": {
-          "id": "assessment",
-          "name": "Оценка"
         }
       },
       {
@@ -505,6 +394,117 @@
           "id": "interview",
           "name": "Интервью"
         }
+      },
+      {
+        "id": "hired",
+        "name": "Выход на работу",
+        "method": "PUT",
+        "enabled": true,
+        "url": "https://api.hh.ru/negotiations/hired/3452143708",
+        "templates": [
+          {
+            "id": "hired",
+            "url": "https://api.hh.ru/message_templates/hired?topic_id=3452143708",
+            "name": "Приглашение на Выход на работу",
+            "quick": false
+          }
+        ],
+        "arguments": [
+          {
+            "id": "message",
+            "required": false,
+            "required_arguments": []
+          },
+          {
+            "id": "send_sms",
+            "required": false,
+            "required_arguments": [
+              {
+                "id": "message"
+              }
+            ]
+          },
+          {
+            "id": "address_id",
+            "required": false,
+            "required_arguments": [
+              {
+                "id": "message"
+              }
+            ]
+          }
+        ],
+        "resulting_employer_state": {
+          "id": "hired",
+          "name": "Выход на работу"
+        }
+      },
+      {
+        "id": "assessment",
+        "name": "Оценка",
+        "method": "PUT",
+        "enabled": true,
+        "url": "https://api.hh.ru/negotiations/assessment/3452143708",
+        "templates": [
+          {
+            "id": "assessment_owner_tool",
+            "url": "https://api.hh.ru/message_templates/assessment_owner_tool?topic_id=3452143708",
+            "name": "Приглашение на Оценку (свой инструмент оценки)",
+            "quick": false
+          }
+        ],
+        "arguments": [
+          {
+            "id": "message",
+            "required": false,
+            "required_arguments": []
+          },
+          {
+            "id": "send_sms",
+            "required": false,
+            "required_arguments": [
+              {
+                "id": "message"
+              }
+            ]
+          }
+        ],
+        "resulting_employer_state": {
+          "id": "assessment",
+          "name": "Оценка"
+        }
+      },
+      {
+        "id": "discard_by_employer",
+        "name": "Отказ",
+        "method": "PUT",
+        "enabled": true,
+        "url": "https://api.hh.ru/negotiations/discard_by_employer/3452143708",
+        "templates": [
+          {
+            "id": "discard_after_interview",
+            "url": "https://api.hh.ru/message_templates/discard_after_interview?topic_id=3452143708",
+            "name": "Отказ",
+            "quick": false
+          },
+          {
+            "id": "discard_after_response",
+            "url": "https://api.hh.ru/message_templates/discard_after_response?topic_id=3452143708",
+            "name": "Отказ откликнувшемуся на вакансию соискателю",
+            "quick": false
+          }
+        ],
+        "arguments": [
+          {
+            "id": "message",
+            "required": false,
+            "required_arguments": []
+          }
+        ],
+        "resulting_employer_state": {
+          "id": "discard_by_employer",
+          "name": "Отказано"
+        }
       }
     ]
   },
@@ -545,7 +545,12 @@
       "stage": "interview",
       "description": "Ровный тип",
       "time": 1695934692097
+    },
+    {
+      "stage": "interview",
+      "description": "",
+      "time": 1696197327286
     }
   ],
-  "timeUpdate": 1695934692544
+  "timeUpdate": 1696197327847
 }

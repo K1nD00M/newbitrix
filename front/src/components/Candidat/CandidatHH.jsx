@@ -10,7 +10,6 @@ import PhoneHH from "../CandidatList/PhoneHH"
 function CandidatHH({ item, setOpen }) {
    const [pdf, setPdf] = useState(null)
    
-   const [messageMail, setMessageMail] = useState('')
    const [messageHh, setMessageHh] = useState('')
    const [selectedAction, setSelectedAction] = useState('');
 
@@ -23,8 +22,7 @@ function CandidatHH({ item, setOpen }) {
          const action = item.data.actions.find(action => action.id === actionName)
          const url = action.templates[0].url
          const data = await apiHH.command(url)
-         setMessageHh(data.sms.text)
-         setMessageMail(data.mail.text)
+         setMessageHh(data.mail.text)
          setSelectedAction(actionName);
       } catch (error) {
          return 
@@ -46,7 +44,7 @@ function CandidatHH({ item, setOpen }) {
       if(personAction) {
          url = personAction.url
       }
-      const res = await apiServer.pushHistoryHH(item.data.id, messageHh, messageMail, url, stage, description)
+      const res = await apiServer.pushHistoryHH(item.data.id, messageHh, url, stage, description)
       setOpen()
    }
    return (
@@ -60,7 +58,6 @@ function CandidatHH({ item, setOpen }) {
             {item && <HhActoins 
                item={item} 
                messageHh={messageHh} setMessageHh={setMessageHh} 
-               messageMail={messageMail} setMessageMail={setMessageMail} 
                selectedAction={selectedAction} handleActionChange={handleActionChange}
             />}
             {item && <ChatHH item={item} />}  

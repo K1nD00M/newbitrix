@@ -5,10 +5,9 @@ const axiosApi = axios.create({
 })
 
 const apiServer = {
-   pushHistoryHH: async (chatId, messageHh, messageMail, url, stage, description) => {
+   pushHistoryHH: async (chatId, messageHh, url, stage, description) => {
       const res = await axiosApi.post(`/candidates/history/${chatId}`, {
          messageHh,
-         messageMail,
          url,
          stage,
          description

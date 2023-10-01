@@ -27,6 +27,19 @@ router.get('/chat', async (req, res) => {
       res.send(error)
    }
 });
+router.post('/chat', async (req, res) => {
+   try {
+      const body = req.body
+      const message = body.message
+      const phone = body.phone
+      await apiWhatsapp.sendMessage(phone, message)
+      const chat = await apiWhatsapp.getChat(phone)
+      res.send(chat)
+   } catch (error) {
+      res.status(500)
+      res.send(error)
+   }
+})
 
 
 module.exports = router

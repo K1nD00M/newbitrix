@@ -63,6 +63,18 @@ const apiServer = {
       } catch (error) {
          return error
       }
+   },
+   sendChatMessage: async (phone, message) => {
+      try {
+         const res = await axiosApi.post('/sms/chat', {
+            phone,
+            message
+         })
+         return res.data
+      } catch (error) {
+         return error
+      }
+      
    }
 }
 

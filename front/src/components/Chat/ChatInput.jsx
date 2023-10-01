@@ -47,9 +47,24 @@ function MessageInput({ onSendMessage, placeholder }) {
             </button>
          </div>
          <div className='flex gap-5 mb-4'>
-            <button className="ml-4 px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none" onClick={helloMessage}>Приветствие</button>
-            <button className="ml-4 px-4 py-2 text-white bg-yellow-500 rounded-lg hover:bg-yellow-600 focus:outline-none" onClick={noCallMessage}>Не дозвонились</button>
-            <button className="ml-4 px-4 py-2 text-white bg-red-500 rounded-lg hover:bg-red-600 focus:outline-none" onClick={goodbuyMessage}>Неудача</button>
+            <button 
+               className="ml-4 px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none" 
+               onClick={helloMessage}
+            >
+               Приветствие
+            </button>
+            <button 
+               className="ml-4 px-4 py-2 text-white bg-yellow-500 rounded-lg hover:bg-yellow-600 focus:outline-none" 
+               onClick={noCallMessage}
+            >
+               Не дозвонились
+            </button>
+            <button 
+               className="ml-4 px-4 py-2 text-white bg-red-500 rounded-lg hover:bg-red-600 focus:outline-none" 
+               onClick={goodbuyMessage}
+            >
+               Неудача
+            </button>
          </div>
       </div>
    );

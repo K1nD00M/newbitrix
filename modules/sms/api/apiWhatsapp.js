@@ -20,7 +20,7 @@ const apiWhatsapp = {
 
          return res
       } catch (error) {
-         console.log(error)
+         return error
       }
    },
    getChat: async (number) => {

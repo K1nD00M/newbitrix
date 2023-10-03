@@ -1,6 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import CandidatModal from "./CandidatModal";
 import { timeConvert } from "../../lib/timeConvert";
+import { useMessagesTwoStore } from "../../store/useMessagesStoreTwo";
+import { useMessagesStore } from "../../store/useMessagesStore";
 
 export default function ItemCanban({ item, isGetNewCandidates }) {
    const [isOpen, setIsOpen] = useState(false)
@@ -35,9 +37,24 @@ export default function ItemCanban({ item, isGetNewCandidates }) {
       vacancy = item.data.titleVacansy
    }
 
+   const messagesAvito = useMessagesStore((state) => state.chats)
+   const messagesAvitoTwo = useMessagesTwoStore((state) => state.chats)
+
+   let isNoRead = false; // Изначально устанавливаем значение false
+
+   if (item.area === 'avito') {
+      if (item.data.isNorth === true) {
+         const result = messagesAvitoTwo.findIndex(message => message.chatId === item.data.chatId);
+         isNoRead = result === -1 ? false : true;
+      } else {
+         const result = messagesAvito.findIndex(message => message.chatId === item.data.chatId);
+         isNoRead = result === -1 ? false : true;
+      }
+   }
+
    return (
       <>
-         <div className="p-4 flex flex-col w-80 gap-3 rounded-3xl cursor-pointer bg-slate-200"
+         <div className={`p-4 flex flex-col w-80 gap-3 rounded-3xl cursor-pointer ${isNoRead ? 'bg-red-300' : ''}`}
             onClick={() => setIsOpen(true)}
          > 
             <div className="flex justify-between">

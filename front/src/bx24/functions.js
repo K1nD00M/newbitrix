@@ -20,11 +20,10 @@ const functionsBX = {
             TITLE: lid.title,
             UF_CRM_AREA: lid.area,
             UF_CRM_CHAT_ID: lid.chatId,
-            UF_CRM_PHONE: lid.phone,
             UF_CRM_USER_ID: lid.userId,
             UF_CRM_VACANSY: lid.vacansy,
             UF_CRM_DESCRIPTION: lid.description,
-            CATEGORY_ID: '157'
+            CATEGORY_ID: '144'
          }
       })
    },
@@ -32,7 +31,7 @@ const functionsBX = {
       await bx24.callMethod("crm.deal.add", {
          fields: {
             TITLE: lid.title,
-            STAGE_ID: 'C157:LOSE',
+            STAGE_ID: 'C144:LOSE',
             UF_CRM_AREA: lid.area,
             UF_CRM_CHAT_ID: lid.chatId,
             UF_CRM_PHONE: lid.phone,

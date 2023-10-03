@@ -10,7 +10,7 @@
     "time": 18813
   },
   "area": "avito",
-  "stage": "phone",
+  "stage": "notCome",
   "history": [
     {
       "stage": "new",
@@ -21,7 +21,12 @@
       "stage": "phone",
       "description": "Кандидат открыт к трудоустройству к нам",
       "time": 1695586240738
+    },
+    {
+      "stage": "notCome",
+      "description": "",
+      "time": 1696245437145
     }
   ],
-  "timeUpdate": 1695586240739
+  "timeUpdate": 1696245437145
 }

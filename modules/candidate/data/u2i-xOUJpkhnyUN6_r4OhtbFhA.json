@@ -10,7 +10,7 @@
     "time": 3467847
   },
   "area": "avito",
-  "stage": "rejectCandidate",
+  "stage": "thinksCandidate",
   "history": [
     {
       "stage": "new",
@@ -36,7 +36,12 @@
       "stage": "rejectCandidate",
       "description": "Кристина Владимировна очень зла",
       "time": 1695503256477
+    },
+    {
+      "stage": "thinksCandidate",
+      "description": "",
+      "time": 1696245255690
     }
   ],
-  "timeUpdate": 1695503256477
+  "timeUpdate": 1696245255690
 }

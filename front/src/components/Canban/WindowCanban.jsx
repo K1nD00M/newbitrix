@@ -10,8 +10,9 @@ const WindowCanban = (({ status, candidates, isGetNewCandidates }) => {
       phone: 'bg-sky-300',
       interview: 'bg-sky-400',
       thinks: 'bg-sky-500',
-      intern: 'bg-sky-600',
-      ok: 'bg-sky-600',
+      thinksCandidate: 'bg-sky-600',
+      intern: 'bg-sky-700',
+      ok: 'bg-sky-800',
       rejectHr: 'bg-red-300',
       rejectCandidate: 'bg-red-400',
       notCome: 'bg-red-700',
@@ -24,11 +25,13 @@ const WindowCanban = (({ status, candidates, isGetNewCandidates }) => {
    } else if (status === 'phone') {
       title = 'Телефонное интервью';
    } else if (status === 'interview') {
-      title = 'Провести собеседование';
+      title = 'Собеседование';
    } else if (status === 'thinks') {
-      title = 'Думаем';
+      title = 'Мы думаем';
+   } else if (status === 'thinksCandidate') {
+      title = 'Кандидат думает';
    }else if (status === 'intern') {
-      title = 'Назначить стажировку';
+      title = 'Стажировка';
    } else if (status === 'ok') {
       title = 'Принят';
    } else if (status === 'rejectHr') {

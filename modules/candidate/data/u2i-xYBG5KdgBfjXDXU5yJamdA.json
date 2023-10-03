@@ -11,13 +11,18 @@
     "isNorth": true
   },
   "area": "avito",
-  "stage": "new",
+  "stage": "ok",
   "history": [
     {
       "stage": "new",
       "description": "",
       "time": 1695602361954
+    },
+    {
+      "stage": "ok",
+      "description": "",
+      "time": 1696245459215
     }
   ],
-  "timeUpdate": 1695602361954
+  "timeUpdate": 1696245459216
 }

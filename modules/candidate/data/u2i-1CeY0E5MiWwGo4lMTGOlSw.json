@@ -32,7 +32,12 @@
       "stage": "thinks",
       "description": "Все устраивает. Но надо поломаться чуть",
       "time": 1695934250223
+    },
+    {
+      "stage": "thinks",
+      "description": "Думаем",
+      "time": 1696245421750
     }
   ],
-  "timeUpdate": 1695934250223
+  "timeUpdate": 1696245421751
 }

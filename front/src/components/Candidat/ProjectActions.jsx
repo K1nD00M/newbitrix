@@ -9,15 +9,19 @@ const status = [
    },
    {
       id: 'interview',
-      text: 'Назначить собеседование'
+      text: 'Собеседование'
    },
    {
       id: 'thinks',
-      text: 'Думаем'
+      text: 'Мы думаем'
+   },
+   {
+      id: 'thinksCandidate',
+      text: 'Кандидат думает'
    },
    {
       id: 'intern',
-      text: 'Пригласить на стажировку'
+      text: 'Стажировка'
    },
    {
       id: 'ok',

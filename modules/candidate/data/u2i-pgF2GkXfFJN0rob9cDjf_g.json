@@ -11,13 +11,18 @@
     "isNorth": false
   },
   "area": "avito",
-  "stage": "new",
+  "stage": "rejectHr",
   "history": [
     {
       "stage": "new",
       "description": "",
       "time": 1695933720418
+    },
+    {
+      "stage": "rejectHr",
+      "description": "",
+      "time": 1696245447767
     }
   ],
-  "timeUpdate": 1695933720418
+  "timeUpdate": 1696245447768
 }

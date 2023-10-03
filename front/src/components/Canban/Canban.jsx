@@ -22,6 +22,7 @@ export default function Canban() {
          <WindowCanban status={'phone'} candidates={candidates} isGetNewCandidates={setIsGetNewCandidates}/>
          <WindowCanban status={'interview'} candidates={candidates} isGetNewCandidates={setIsGetNewCandidates} />
          <WindowCanban status={'thinks'} candidates={candidates} isGetNewCandidates={setIsGetNewCandidates}/>
+         <WindowCanban status={'thinksCandidate'} candidates={candidates} isGetNewCandidates={setIsGetNewCandidates}/>
          <WindowCanban status={'intern'} candidates={candidates} isGetNewCandidates={setIsGetNewCandidates}/>
          <WindowCanban status={'notCome'} candidates={candidates} isGetNewCandidates={setIsGetNewCandidates}/>
          <WindowCanban status={'rejectCandidate'} candidates={candidates} isGetNewCandidates={setIsGetNewCandidates}/>

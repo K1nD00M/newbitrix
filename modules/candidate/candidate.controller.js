@@ -6,6 +6,7 @@ const { History } = require('./candidate.interface');
 const hhApi = require('../hh/hh.api');
 const { saveJsonFile, getJsonData } = require('../../libs/jsonLibrary');
 const avitoPhoneApi = require('../avito/avito.phone');
+const bitrixApi = require('./bitrix.api');
 
 const token = 'USERQLEJOJIKE8V2MHLL2984K1HS98VPFIRAST1F0F9KR6841N8JM2CBQTFKQH61'
 
@@ -50,6 +51,7 @@ router.post('/history/:chat_id', async (req, res) => {
          await CandidateService.updateUser(chatId, userHH)
       }
       const user = await CandidateService.pushHistory(chatId, history)
+      await bitrixApi.updateCandidate(body.stage, body.bxId)
       logger.info(`POST /candidate/history/${chatId}`)
 
       res.send(user)
@@ -67,6 +69,7 @@ router.post('/history/avito/:chat_id', async (req, res) => {
       const chatId = req.params.chat_id
       const history = new History(body.stage, body.description)
       const user = await CandidateService.pushHistory(chatId, history)
+      bitrixApi.updateCandidate(body.stage, body.bxId)
       logger.info(`POST /candidate/avito/history/${chatId}`)
 
       res.send(user)

@@ -20,7 +20,7 @@ class CandidateService {
    
    static async addCandidate(candidateData, description, phone='') {
       try {
-         const candidate = new Candidate(candidateData, 'avito', description, phone)
+         const candidate = new Candidate(candidateData, 'avito', description, phone, bxId)
          saveJsonFile(candidate, dataDir, candidateData.chatId)
          return candidateData
       } catch (error) {
@@ -28,10 +28,10 @@ class CandidateService {
       }
    }
 
-   static async addCandidateInHh(candidateData) {
+   static async addCandidateInHh(candidateData, phone, bxId) {
       try {
-         const candidate = new Candidate(candidateData, 'hh')
-         saveJsonFile(candidate, dataDir, candidateData.chatId)
+         const candidate = new Candidate(candidateData, 'hh', '', phone, bxId)
+         saveJsonFile(candidate, dataDir, candidateData.id)
          return candidateData
       } catch (error) {
          return error

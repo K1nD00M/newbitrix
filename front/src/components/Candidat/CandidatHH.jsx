@@ -44,7 +44,7 @@ function CandidatHH({ item, setOpen }) {
       if(personAction) {
          url = personAction.url
       }
-      const res = await apiServer.pushHistoryHH(item.data.id, messageHh, url, stage, description)
+      const res = await apiServer.pushHistoryHH(item.data.id, messageHh, url, stage, description, item.bxId)
       setOpen()
    }
    return (

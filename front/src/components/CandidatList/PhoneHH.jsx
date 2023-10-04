@@ -8,7 +8,7 @@ import { apiServer } from "../../api/api";
 export default function PhoneHH({ candidat }) {
    const [startDate, setStartDate] = useState([new Date()]);
    const [messages, setMessages] = useState([''])
-   const [phone, setPhone] = useState('')
+   const [phone, setPhone] = useState(candidat.phone)
 
    const addMessage = () => {
       setStartDate([...startDate, new Date()])
@@ -32,7 +32,8 @@ export default function PhoneHH({ candidat }) {
    }
 
    return (
-      <div className="flex flex-col mb-10 px-6">
+      <div className="flex flex-col mb-10 px-6 mt-10">
+         <h3 className="text-center font-bold text-lg">Отправить смс</h3>
          <div className="p-4 border-b border-gray-300">
             <div>
                <input
@@ -41,6 +42,7 @@ export default function PhoneHH({ candidat }) {
                   placeholder="Введите номер телефона"
                   value={phone}
                   onChange={(event) => setPhone(event.target.value)}
+                  disabled={true}
                />
             </div>
          </div>

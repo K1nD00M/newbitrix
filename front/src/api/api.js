@@ -5,21 +5,23 @@ const axiosApi = axios.create({
 })
 
 const apiServer = {
-   pushHistoryHH: async (chatId, messageHh, url, stage, description) => {
+   pushHistoryHH: async (chatId, messageHh, url, stage, description, bxId) => {
       const res = await axiosApi.post(`/candidates/history/${chatId}`, {
          messageHh,
          url,
          stage,
-         description
+         description,
+         bxId
       })
 
       return res.data
    },
-   pushHistoryAvito: async (chatId, selectedAction, stage, description) => {
+   pushHistoryAvito: async (chatId, selectedAction, stage, description, bxId) => {
       const res = await axiosApi.post(`/candidates/history/avito/${chatId}`, {
          selectedAction,
          stage,
-         description
+         description,
+         bxId
       })
 
       return res

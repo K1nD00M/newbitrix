@@ -32,7 +32,8 @@ export default function PhoneAvito({ candidat }) {
    }
 
    return (
-      <div className="flex flex-col mb-10">
+      <div className="flex flex-col my-10" >
+         <h3 className="text-center font-bold text-lg">Отправить смс</h3>
          <div className="p-4 border-b border-gray-300">
             <div>
                <input

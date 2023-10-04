@@ -5,8 +5,9 @@ const logger = require('../../libs/logger');
 const hhApi = require('./hh.api');
 const CandidateService = require('../candidate/candidate.service');
 const bitrixApi = require('../candidate/bitrix.api');
+const getNumberPdf = require('./hh.pdf');
 
-const token = 'USERQLEJOJIKE8V2MHLL2984K1HS98VPFIRAST1F0F9KR6841N8JM2CBQTFKQH61'
+const token = 'USERONL80Q3D7S2H5D5BENK4RMDE2T6H8PPUN7DBN7LHLD7S9E6FVTBH6LK13KVE'
 
 router.get('/query', async (req, res) => {
    const code = req.query.code
@@ -85,6 +86,20 @@ router.post('/new', async (req, res) => {
       res.status(500)
       res.send(error)
    }
+})
+router.post('/new/new', async (req, res) => {
+      const body = req.body
+      const employerId = '3477602774'
+      const data = await hhApi.getNegotiation(token, employerId)
+      const pdfUrl = data.resume.actions.download.pdf.url
+      const pdf = await hhApi.getPdf(token, pdfUrl)
+      const phone = await getNumberPdf(pdf)
+      console.log(phone)
+      const bxId = await bitrixApi.addCandidateHH(data)
+      
+      CandidateService.addCandidateInHh(data, phone, bxId)
+
+      res.send('ok')
 })
 
 module.exports = router

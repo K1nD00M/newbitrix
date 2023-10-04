@@ -11,7 +11,6 @@ const functionsBX = {
             "XML_ID": "DESCRIPTION",
             "SETTINGS": { "DEFAULT_VALUE": "" }
          }
-         
       })
    },
    addLid: async (lid) => {

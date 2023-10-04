@@ -5,6 +5,7 @@ const CandidateService = require('./candidate.service');
 const { History } = require('./candidate.interface');
 const hhApi = require('../hh/hh.api');
 const { saveJsonFile, getJsonData } = require('../../libs/jsonLibrary');
+const avitoPhoneApi = require('../avito/avito.phone');
 
 const token = 'USERQLEJOJIKE8V2MHLL2984K1HS98VPFIRAST1F0F9KR6841N8JM2CBQTFKQH61'
 
@@ -25,7 +26,9 @@ router.post('/', async (req, res) => {
    try {
       const data = req.body.data
       const description = req.body.description
-      const user = await CandidateService.addCandidate(data, description)
+      let phone = ''
+      data.isNorth ? phone = await avitoPhoneApi.getPhoneTwo(data.chatId) : phone = await avitoPhoneApi.getPhoneOne(data.chatId)
+      const user = await CandidateService.addCandidate(data, description, phone)
       logger.info(`POST /candidate`)
       res.send(user)
    } catch (error) {

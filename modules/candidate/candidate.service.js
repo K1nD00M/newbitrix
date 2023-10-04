@@ -18,9 +18,9 @@ class CandidateService {
       }
    }
    
-   static async addCandidate(candidateData, description) {
+   static async addCandidate(candidateData, description, phone='') {
       try {
-         const candidate = new Candidate(candidateData, 'avito', description)
+         const candidate = new Candidate(candidateData, 'avito', description, phone)
          saveJsonFile(candidate, dataDir, candidateData.chatId)
          return candidateData
       } catch (error) {

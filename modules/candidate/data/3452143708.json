@@ -509,7 +509,7 @@
     ]
   },
   "area": "hh",
-  "stage": "interview",
+  "stage": "rejectHr",
   "history": [
     {
       "stage": "new",
@@ -550,7 +550,12 @@
       "stage": "interview",
       "description": "",
       "time": 1696197327286
+    },
+    {
+      "stage": "rejectHr",
+      "description": "афвыафыва",
+      "time": 1696377163844
     }
   ],
-  "timeUpdate": 1696197327847
+  "timeUpdate": 1696377163845
 }

@@ -4,6 +4,7 @@ const router = express.Router();
 const logger = require('../../libs/logger');
 const hhApi = require('./hh.api');
 const CandidateService = require('../candidate/candidate.service');
+const bitrixApi = require('../candidate/bitrix.api');
 
 const token = 'USERQLEJOJIKE8V2MHLL2984K1HS98VPFIRAST1F0F9KR6841N8JM2CBQTFKQH61'
 
@@ -12,7 +13,7 @@ router.get('/query', async (req, res) => {
    try {
       const result = await HHService.getJwtInCode(code)
       logger.info('GET /hh/query')
-      res.redirect('https://vodovoz.bitrix24.ru/marketplace/app/169/')
+      res.send(result)
    } catch (error) {
       res.status(500)
       logger.error(`GET /hh/query \n${error}`)
@@ -76,7 +77,7 @@ router.post('/new', async (req, res) => {
       const body = req.body
       const employerId = body.payload.topic_id
       const data = await hhApi.getNegotiation(token, employerId)
-
+      bitrixApi.addCandidateHH(data)
       CandidateService.addCandidateInHh(data)
 
       res.send('ok')
@@ -84,7 +85,6 @@ router.post('/new', async (req, res) => {
       res.status(500)
       res.send(error)
    }
-   
 })
 
 module.exports = router

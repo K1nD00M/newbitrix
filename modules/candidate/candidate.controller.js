@@ -27,9 +27,9 @@ router.post('/', async (req, res) => {
    try {
       const data = req.body.data
       const description = req.body.description
-      let phone = '+79219722296'
+      let phone = ''
+      data.isNorth ? phone = await avitoPhoneApi.getPhoneTwo(data.chatId) : phone = await avitoPhoneApi.getPhoneOne(data.chatId)
       const bxId = await bitrixApi.addCandidateAvito(data, phone)
-      //data.isNorth ? phone = await avitoPhoneApi.getPhoneTwo(data.chatId) : phone = await avitoPhoneApi.getPhoneOne(data.chatId)
       const user = await CandidateService.addCandidate(data, description, phone, bxId)
       logger.info(`POST /candidate`)
       res.send(user)

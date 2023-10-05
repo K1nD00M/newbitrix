@@ -8,7 +8,7 @@ const { saveJsonFile, getJsonData } = require('../../libs/jsonLibrary');
 const avitoPhoneApi = require('../avito/avito.phone');
 const bitrixApi = require('./bitrix.api');
 
-const token = 'USERQLEJOJIKE8V2MHLL2984K1HS98VPFIRAST1F0F9KR6841N8JM2CBQTFKQH61'
+const token = 'USERONL80Q3D7S2H5D5BENK4RMDE2T6H8PPUN7DBN7LHLD7S9E6FVTBH6LK13KVE'
 
 // Получить всех кандидатов 
 router.get('/', async (req, res) => {
@@ -46,6 +46,7 @@ router.post('/history/:chat_id', async (req, res) => {
       const body = req.body
       const history = new History(body.stage, body.description)
       if(body.url) {
+         await hhApi.updateCandidat(token, body.url, body.message) 
          await hhApi.url(token, body.url)
          await hhApi.sendMessage(token, body.messageHh, chatId)
          const userHH = await hhApi.getNegotiation(token, chatId)

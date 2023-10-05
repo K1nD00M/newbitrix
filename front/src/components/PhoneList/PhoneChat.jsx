@@ -42,7 +42,7 @@ export default function PhoneChat({ number }) {
          </button>
          <div className={`${isOpen ? 'h-auto' : 'h-0'} overflow-hidden `}>
             <div className="flex flex-col-reverse">
-               {chat.map(item => (
+               {chat.filter(item => typeof item.text === 'string').map(item => item.body (
                   <PhoneMessage text={item.body} isSentByUser={item.from === '79633437672@c.us'} key={item.id} />
                ))}
             </div>

@@ -36,7 +36,7 @@ app.use(express.static(www));
    app.use('/candidates', candidateRouter)
    app.use('/sms', smsRouter)
    
-   app.listen(4000, () => {
-     console.log('Сервер запущен на порту 4000');
+   app.listen(process.env.port || 7115, () => {
+     console.log('Сервер запущен на порту 7115');
    });
 })()

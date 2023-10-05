@@ -101,7 +101,6 @@ const avitoApiTwo = {
                'Authorization': `Bearer ${token}`,
             }
          })
-         console.log(req)
 
          const chat = req.data.messages
 

@@ -29,14 +29,29 @@ export default function Chat (){
    const [user, setUser] = useState(chats.find(item => item.chatId === chatId))
    const [description, setDescription] = useState('')
 
+   const [isPush, setIsPush] = useState(false)
+
    const pushCandidat = async () => {
       try {
+         setIsPush(true)
          await apiServer.addCandidateAvito(user, description)
          navigate('/candidates')
       } catch (error) {
+         setIsPush(false)
          console.log(error)
       }
       
+   }
+
+   const [isReadChat, setIsReadChat] = useState(false)
+
+   const readChat = async () => {
+      try {
+         await apiAvito.readChat(chatId)
+         setIsReadChat(true)
+      } catch (error) {
+         setIsReadChat(false)
+      }  
    }
 
    useEffect(() => {
@@ -69,11 +84,12 @@ export default function Chat (){
          </div>
          <MessageInput onSendMessage={sendNewMessage} placeholder={"Введите сообщение..."} />
          <button
-            onClick={() => apiAvito.readChat(chatId)}
+            onClick={() => readChat()}
             className={`ml-4 px-4 py-2 text-white bg-green-500 rounded-lg hover:bg-green-600 focus:outline-none mb-4`}
          >
             Прочитать сообщение
          </button>
+         {!isReadChat || <span className="text-center text-xl">Прочитано  </span>}
          <DescriptionInput description={description} setDescription={setDescription} />
          <button
             onClick={() => pushCandidat()}
@@ -81,6 +97,7 @@ export default function Chat (){
          >
             Добавить кандидата 
          </button>
+         {!isPush || <span className="text-center text-xl mt-4">Идет добавление. . .</span>}
       </div>
    );
 }

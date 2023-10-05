@@ -78,28 +78,18 @@ router.post('/new', async (req, res) => {
       const body = req.body
       const employerId = body.payload.topic_id
       const data = await hhApi.getNegotiation(token, employerId)
-      bitrixApi.addCandidateHH(data)
-      CandidateService.addCandidateInHh(data)
+      const pdfUrl = data.resume.actions.download.pdf.url
+      const pdf = await hhApi.getPdf(token, pdfUrl)
+      const phone = await getNumberPdf(pdf)
+      const bxId = await bitrixApi.addCandidateHH(data, phone, 'hh')
+      
+      CandidateService.addCandidateInHh(data, phone, bxId)
 
       res.send('ok')
    } catch (error) {
       res.status(500)
       res.send(error)
    }
-})
-router.post('/new/new', async (req, res) => {
-      const body = req.body
-      const employerId = '3477602774'
-      const data = await hhApi.getNegotiation(token, employerId)
-      const pdfUrl = data.resume.actions.download.pdf.url
-      const pdf = await hhApi.getPdf(token, pdfUrl)
-      const phone = await getNumberPdf(pdf)
-      console.log(phone)
-      const bxId = await bitrixApi.addCandidateHH(data)
-      
-      CandidateService.addCandidateInHh(data, phone, bxId)
-
-      res.send('ok')
 })
 
 module.exports = router

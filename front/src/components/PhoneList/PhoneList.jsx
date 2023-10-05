@@ -7,6 +7,8 @@ import PhoneChat from "./PhoneChat"
 
 export default function PhoneList() {
    const [phones, setPhones] = useState([])
+   const [phoneFilter, setPhoneFilter] = useState('')
+   const [filteredCandidates, setFilteredCandidates] = useState([])
 
    useEffect(() => {
       const getPhones = async () => {
@@ -16,6 +18,11 @@ export default function PhoneList() {
 
       getPhones()
    }, [])
+
+   useEffect(() => {
+      const newCandidates = phones.filter(item => item.phone.includes(phoneFilter))
+      setFilteredCandidates(newCandidates)
+   }, [phoneFilter, phones])   
 
    if(!phones.length) {
       return (
@@ -27,7 +34,13 @@ export default function PhoneList() {
 
    return (
       <div>
-         {phones.map((item, index) => {
+         <input 
+            value={phoneFilter}
+            onChange={(event) => setPhoneFilter(event.target.value)}
+            placeholder="Фильтр по номеру"
+            className="flex-grow px-5 py-2 rounded-lg border border-blue-400 border-solid focus:outline-none focus:border-blue-500"
+         />
+         {filteredCandidates.map((item, index) => {
             if(item.area === 'hh') {
                return (
                   <div key={index}>

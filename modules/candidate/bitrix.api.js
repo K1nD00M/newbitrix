@@ -21,8 +21,20 @@ const bitrixApi = {
       })
       return res.data.result
    },
+   addCandidateAvito: async (candidate, phone) => {
+      const res = await axiosBx.post('/crm.deal.add.json', {
+         fields: {
+            "TITLE": `${candidate.name}`,
+            "UF_CRM_AREA": "Avito",
+            "UF_CRM_CHAT_ID": candidate.chatId,
+            "UF_CRM_VACANSY": candidate.titleVacansy,
+            "UF_CRM_PHONE": phone,
+            "CATEGORY_ID": 144
+         } 
+      })
+      return res.data.result
+   },
    updateCandidate: (status, id) => {
-      console.log(status, id)
       if (status === 'new') {
          axiosBx.post("/crm.deal.update", { 
             id: id,  

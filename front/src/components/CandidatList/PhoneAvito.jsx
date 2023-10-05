@@ -8,7 +8,7 @@ export default function PhoneAvito({ candidat }) {
    const [startDate, setStartDate] = useState([new Date()]);
    const [messages, setMessages] = useState([''])
    
-   const [phone, setPhone] = useState('')
+   const [phone, setPhone] = useState(candidat.phone)
 
    const addMessage = () => {
       setStartDate([...startDate, new Date()])
@@ -42,6 +42,7 @@ export default function PhoneAvito({ candidat }) {
                   placeholder="Введите номер телефона"
                   value={phone}
                   onChange={(event) => setPhone(event.target.value)}
+                  disabled={true}
                />
             </div>
          </div>

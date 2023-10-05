@@ -40,24 +40,26 @@ export default function PhoneList() {
             placeholder="Фильтр по номеру"
             className="flex-grow px-5 py-2 rounded-lg border border-blue-400 border-solid focus:outline-none focus:border-blue-500"
          />
-         {filteredCandidates.map((item, index) => {
-            if(item.area === 'hh') {
-               return (
-                  <div key={index}>
-                     <PhoneCardHH info={item} />
-                     <PhoneChat number={item.number} />
-                  </div>
-               )
-            } 
-            else{
-               return (
-                  <div key={index}>
-                     <PhoneCardAvito info={item}  />
-                     <PhoneChat number={item.phone} />
-                  </div>
-               )
-            }
-         })}
+         <div className="flex flex-col-reverse">
+            {filteredCandidates.map((item, index) => {
+               if(item.area === 'hh') {
+                  return (
+                     <div key={index}>
+                        <PhoneCardHH info={item} />
+                        <PhoneChat number={item.number} />
+                     </div>
+                  )
+               } 
+               else{
+                  return (
+                     <div key={index}>
+                        <PhoneCardAvito info={item}  />
+                        <PhoneChat number={item.phone} />
+                     </div>
+                  )
+               }
+            })}
+         </div>
       </div>
    )
 }

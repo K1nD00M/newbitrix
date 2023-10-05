@@ -74,6 +74,7 @@ function CandidatHH({ item, setOpen }) {
             >
                Изменить состояние
             </button>
+            {item && <PhoneChat number={item.phone} />}
          </div>
       </div>
    )

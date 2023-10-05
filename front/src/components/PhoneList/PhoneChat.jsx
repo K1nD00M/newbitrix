@@ -14,7 +14,7 @@ export default function PhoneChat({ number }) {
       const getChat = async () => {
          try {
             const data = await apiServer.getChatPhone(number)
-            const messages = data.messages
+            const messages = data.messages.filter(item => typeof item.body === 'string')
             setChat(messages)
          } catch (error) {
             setIsError(true)
@@ -42,7 +42,7 @@ export default function PhoneChat({ number }) {
          </button>
          <div className={`${isOpen ? 'h-auto' : 'h-0'} overflow-hidden `}>
             <div className="flex flex-col-reverse">
-               {chat.filter(item => typeof item.text === 'string').map(item => item.body (
+               {chat.map(item => (
                   <PhoneMessage text={item.body} isSentByUser={item.from === '79633437672@c.us'} key={item.id} />
                ))}
             </div>

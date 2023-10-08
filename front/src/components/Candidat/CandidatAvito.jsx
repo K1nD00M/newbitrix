@@ -6,6 +6,7 @@ import ChatAvito from "./Chat/ChatAvito";
 import ChatTwo from "../Chat/ChatTwo";
 import ChatAvitoTwo from "./Chat/ChatAvitoTwo";
 import PhoneAvito from "../CandidatList/PhoneAvito";
+import PhoneChat from "../PhoneList/PhoneChat";
 
 function CandidatAvito({ item, setOpen }) {
    const [selectedAction, setSelectedAction] = useState('');
@@ -40,6 +41,7 @@ function CandidatAvito({ item, setOpen }) {
                Изменить состояние
             </button>
             {item && <StageHistory item={item} />}
+            {item && <PhoneChat number={item.phone} />}
          </div>
       </div>
    )

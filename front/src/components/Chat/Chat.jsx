@@ -40,7 +40,6 @@ export default function Chat (){
          setIsPush(false)
          console.log(error)
       }
-      
    }
 
    const [isReadChat, setIsReadChat] = useState(false)

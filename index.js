@@ -30,11 +30,29 @@ app.use(express.static(www));
    app.post('/', (req, res) => {
       res.sendFile(`index.html`, { root: www });
    });
-   app.use('/hh', hhRouter);
-   app.use('/avito', avitoRouter)
-   app.use('/avito/two', avitoRouterTwo)
-   app.use('/candidates', candidateRouter)
-   app.use('/sms', smsRouter)
+   app.get('/candidates', (req, res) => {
+      res.sendFile(`index.html`, { root: www });
+   });
+   app.post('/candidates', (req, res) => {
+      res.sendFile(`index.html`, { root: www });
+   });
+   app.get('/phones', (req, res) => {
+      res.sendFile(`index.html`, { root: www });
+   });
+   app.post('/phones', (req, res) => {
+      res.sendFile(`index.html`, { root: www });
+   });
+   app.get('/avito', (req, res) => {
+      res.sendFile(`index.html`, { root: www });
+   });
+   app.post('/avito', (req, res) => {
+      res.sendFile(`index.html`, { root: www });
+   });
+   app.use('/api/hh', hhRouter);
+   app.use('/api/avito', avitoRouter)
+   app.use('/api/avito/two', avitoRouterTwo)
+   app.use('/api/candidates', candidateRouter)
+   app.use('/api/sms', smsRouter)
    
    app.listen(process.env.port || 4000, () => {
      console.log('Сервер запущен на порту 4000');

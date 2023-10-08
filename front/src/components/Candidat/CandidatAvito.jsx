@@ -21,6 +21,8 @@ function CandidatAvito({ item, setOpen }) {
    return (
       <div className="py-12 flex  justify-between pr-5">
          <div>
+            <span className="px-4 font-bold text-xl text-blue-700 border-b-2 border-blue-700 ">{item.data.name}</span>
+            <span className="font-bold text-xl">{item.data.titleVacansy}</span>
             {item.data.isNorth === true ? <ChatAvitoTwo item={item} /> : <ChatAvito item={item} />}
             
          </div>

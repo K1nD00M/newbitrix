@@ -8,6 +8,7 @@ export default function Canban() {
    const [isGetNewCandidates, setIsGetNewCandidates] = useState(true)
 
    const [phoneFilter, setPhoneFilter] = useState('')
+   const [vacancyFilter, setVacancyFilter] = useState('')
    const [filteredCandidates, setFilteredCandidates] = useState([])
  
    useEffect(() => {
@@ -20,9 +21,13 @@ export default function Canban() {
    }, [isGetNewCandidates])
 
    useEffect(() => {
-      const newCandidates = candidates.filter(item => item.phone.includes(phoneFilter))
-      setFilteredCandidates(newCandidates)
-   }, [phoneFilter, candidates])
+      const phoneCandidates = candidates.filter(item => item?.phone.includes(phoneFilter))
+      const  vacansyCandidates = phoneCandidates.filter(item => item.area === 'hh' 
+         ? item?.data?.vacancy?.name.includes(vacancyFilter) 
+         : item?.data?.titleVacansy.includes(vacancyFilter)
+      )
+      setFilteredCandidates(vacansyCandidates)
+   }, [phoneFilter, vacancyFilter, candidates])
 
    return (
       <div>
@@ -30,6 +35,12 @@ export default function Canban() {
             value={phoneFilter}
             onChange={(event) => setPhoneFilter(event.target.value)}
             placeholder="Фильтр по номеру"
+            className="flex-grow px-5 py-2 rounded-lg border border-blue-400 border-solid focus:outline-none focus:border-blue-500"
+         />
+         <input 
+            value={vacancyFilter}
+            onChange={(event) => setVacancyFilter(event.target.value)}
+            placeholder="Фильтр по вакансии"
             className="flex-grow px-5 py-2 rounded-lg border border-blue-400 border-solid focus:outline-none focus:border-blue-500"
          />
          <div className="flex overflow-x-scroll gap-10 bg-slate-100 p-6 h-full">

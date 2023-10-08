@@ -48,7 +48,8 @@ export default function PhoneHH({ candidat }) {
          </div>
          {messages.map((item, index) => (
             <div className="mb-3" key={index}>
-               <input
+               <textarea
+                  rows={4}
                   type="text"
                   className="w-3/4 flex-grow px-3 py-2 rounded-lg border border-gray-400 focus:outline-none focus:border-blue-500"
                   placeholder="Введите сообщение..."

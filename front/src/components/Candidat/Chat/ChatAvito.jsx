@@ -12,6 +12,8 @@ export default function ChatAvito ({ item }){
    const isError = useChatStore(state => state.isError)
    const isLoading = useChatStore(state => state.isLoading)
 
+   const [message, setMessage] = useState([])
+
    const sendNewMessage = (message) => {
       onSendMessage(item.data.chatId, message);
    };
@@ -22,6 +24,17 @@ export default function ChatAvito ({ item }){
       }
       viewChat()
    }, [])
+
+   const [isReadChat, setIsReadChat] = useState(false)
+
+   const readChat = async () => {
+      try {
+         await apiAvito.readChat(item.data.chatId)
+         setIsReadChat(true)
+      } catch (error) {
+         setIsReadChat(false)
+      }  
+   }
 
    if(isError) {
       return <div>Ошибка</div>
@@ -49,6 +62,7 @@ export default function ChatAvito ({ item }){
          >
             Прочитать сообщение
          </button>
+         {!isReadChat || <span className="text-center text-xl">Прочитано  </span>}
       </div>
    );
 }

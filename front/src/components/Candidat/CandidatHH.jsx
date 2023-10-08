@@ -49,7 +49,7 @@ function CandidatHH({ item, setOpen }) {
    }
    return (
       <div className="py-12 flex ">
-         <div className="w-1/2 flex-shrink-0 pr-4">
+         <div className="w-[60%] flex-shrink-0 pr-4">
             {pdf && <PdfViewer pdfData={pdf} />}
          </div>
          <div className="">

@@ -4,11 +4,11 @@ const axiosWhatsapp = axios.create({
    baseURL: 'https://wappi.pro/api',
    headers: {
       "Content-Type": 'application/json',
-      "Authorization": 'd17f21ac818f060f78571508e569a63e07b76811'
+      "Authorization": '0ca9adeccfde4eca8b80a1de4764dd11a1ba7a63'
    }
 })
 
-const profileId = '961d7817-588e'
+const profileId = 'bc02bf7d-058f'
 
 const apiWhatsapp = {
    sendMessage: async (number, message) => {

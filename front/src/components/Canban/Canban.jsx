@@ -21,10 +21,10 @@ export default function Canban() {
    }, [isGetNewCandidates])
 
    useEffect(() => {
-      const phoneCandidates = candidates.filter(item => item?.phone.includes(phoneFilter))
-      const  vacansyCandidates = phoneCandidates.filter(item => item.area === 'hh' 
-         ? item?.data?.vacancy?.name.includes(vacancyFilter) 
-         : item?.data?.titleVacansy.includes(vacancyFilter)
+      const phoneCandidates = candidates?.filter(item => item?.phone?.includes(phoneFilter))
+      const  vacansyCandidates = phoneCandidates?.filter(item => item.area === 'hh' 
+         ? item?.data?.vacancy?.name?.includes(vacancyFilter) 
+         : item?.data?.titleVacansy?.includes(vacancyFilter)
       )
       setFilteredCandidates(vacansyCandidates)
    }, [phoneFilter, vacancyFilter, candidates])

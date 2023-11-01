@@ -41,8 +41,9 @@ export default function ChatTwo (){
    useEffect(() => {
       const viewChat = async () => {
          if(!chats.length) await getMessages()
-         getChat(chatId)
-         setUser(user)
+         await getChat(chatId)
+         const newChats = chats
+         setUser(newChats.find(item => item.chatId === chatId))
       }
       viewChat()
    }, [])
@@ -57,6 +58,10 @@ export default function ChatTwo (){
 
    return (
       <div className="bg-white p-4 rounded shadow-md mx-auto mt-4 flex flex-col">
+         <div className="flex justify-between mb-2 pb-2 border-b-2 text-lg">
+            <span>{user?.name}</span>
+            <span>{user?.titleVacansy}</span>
+         </div>
          <div className=" flex flex-col-reverse">
             {messages.map((message, index) => (
                <ChatMessage

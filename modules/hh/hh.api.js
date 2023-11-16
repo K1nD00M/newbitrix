@@ -3,8 +3,8 @@ const { default: axios } = require("axios");
 const data = new URLSearchParams();
 const accessApp = 'APPLSUP5QK71U5JUHGS984OV36ELE1ELVDIE0EKB8TDT709STCTDSP1J722MJS6N'
 data.append('grant_type', 'authorization_code');
-data.append('client_id', 'VSP8B7I7EJ9C2VR0O0MPVG1VBIMGPI5PEFM7RUDHHI064AQ28FNI8EDEB7CICLHE');
-data.append('client_secret', 'OAVF68G46LPL8SNQD7IN1KS6B4KKA81G62SHB55ALRBE4J2TB6OLSBQG9T347F5C')
+data.append('client_id', 'JLNU1P2LRJ3PC92HLDT391MKRLUN5G1UVL2VIVEL4NMAISUPEEKF7J4JF91LQC6M');
+data.append('client_secret', 'K122JHG2MSGLV5LBOGRKK5U5LAMGJ8SL9QJP0UHN3V83MP9UTA1CQJTB6GAIPUMS')
 
 const hhAxios = axios.create({
    baseURL: 'https://api.hh.ru',

@@ -12,6 +12,9 @@ export default function Header() {
             <Link to={'/phones'} className='text-white text-base'>
                SMS
             </Link>
+            <Link to={'/add'} className='text-white text-base'>
+               Добавить кандидата
+            </Link>
             <div className='flex gap-7'>
                <Link to={'/avito'}>
                   Авито C.

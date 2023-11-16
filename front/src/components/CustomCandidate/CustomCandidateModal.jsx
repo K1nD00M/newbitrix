@@ -1,8 +1,7 @@
-import CandidatHH from "../Candidat/CandidatHH";
-import CandidatAvito from "../Candidat/CandidatAvito";
-import CandidatCustom from "../Candidat/CandidatCustom";
+import React from 'react'
+import CustomCandidate from './CustomCandidate';
 
-function СandidatModal({ item, isOpen, setIsOpen }) {
+export default function CustomCandidateModal({ isOpen, setIsOpen }) {
    const closeModal = () => {
       setIsOpen(false);
    };
@@ -18,12 +17,10 @@ function СandidatModal({ item, isOpen, setIsOpen }) {
                   className="w-[1148px] h-[644px] bg-white overflow-y-scroll"
                   onClick={(event) => event.stopPropagation()}
                >
-                  {item.area === 'custom' ? <CandidatCustom item={item} setOpen={setIsOpen} /> : item.area === 'hh' ? <CandidatHH item={item} setOpen={setIsOpen}/> : <CandidatAvito item={item} setOpen={setIsOpen} />}
+                  <CustomCandidate />
                </div>
             </div>
          )}
       </>
    );
 }
-
-export default СandidatModal;

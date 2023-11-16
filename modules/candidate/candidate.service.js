@@ -28,6 +28,16 @@ class CandidateService {
       }
    }
 
+   static async addCustomCandidate(candidateData, description, phone='', bxId) {
+      try {
+         const candidate = new Candidate(candidateData, 'custom', description, phone, bxId)
+         saveJsonFile(candidate, dataDir, bxId)
+         return candidateData
+      } catch (error) {
+         return error
+      }
+   }
+
    static async addCandidateInHh(candidateData, phone, bxId) {
       try {
          const candidate = new Candidate(candidateData, 'hh', '', phone, bxId)

@@ -6,6 +6,7 @@ import MessagesHH from '../components/MessagesHH/MessagesHH'
 import Canban from '../components/Canban/Canban'
 import MessagesListTwo from '../components/MessagesList/MessagesListTwo'
 import ChatTwo from '../components/Chat/ChatTwo'
+import AddCandidatePage from '../components/CustomCandidate/AddCandidatePage'
 
 const routerConfig = [
    {
@@ -35,7 +36,11 @@ const routerConfig = [
    {
       path: '/chat/two/:chatId',
       element: <ChatTwo />
-   }
+   },
+   {
+      path: '/add',
+      element: <AddCandidatePage />
+   },
 ]
 
 const AppRouter =

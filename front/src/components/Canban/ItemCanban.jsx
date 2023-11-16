@@ -11,7 +11,6 @@ export default function ItemCanban({ item, isGetNewCandidates }) {
       if(!newValue) {
          setIsOpen(false)
       } else {
-         console.log(321)
          setIsOpen(false)
          isGetNewCandidates(true)
       }
@@ -68,7 +67,7 @@ export default function ItemCanban({ item, isGetNewCandidates }) {
                {lastDescription}
             </div>
             <div>
-               <span className={`${item.area === 'hh' ? 'bg-red-600' : 'bg-green-500'} px-3 py-2 rounded-lg text-white`}>{item.area === 'hh' ? 'HH' : "Avito"}</span>
+               <span className={`${item.area === 'hh' ? 'bg-red-600' : item.area === "avito" ? 'bg-green-500' : 'bg-blue-500'} px-3 py-2 rounded-lg text-white`}>{item.area === 'hh' ? 'HH' : item.area === "avito" ? 'Avito' : 'Случайный'}</span>
             </div>
          </div>
       

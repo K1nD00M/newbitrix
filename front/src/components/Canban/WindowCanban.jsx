@@ -49,7 +49,7 @@ const WindowCanban = (({ status, candidates, isGetNewCandidates }) => {
    }, [candidates, status])
 
    return (
-      <div className="">
+      <div className="min-w-[336px]">
          <div className={`w-full text-center p-3 text-lg font-bold ${theme[status]}`}>
             {title}
          </div>

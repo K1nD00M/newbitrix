@@ -75,7 +75,17 @@ const apiServer = {
       } catch (error) {
          return error
       }
-      
+   },
+   downloadExcel: async () => {
+      try {
+         const res = await axiosApi('/candidates/xl', {
+            responseType: 'blob'
+         })
+
+         return res
+      } catch (error) {
+         return error
+      }
    }
 }
 

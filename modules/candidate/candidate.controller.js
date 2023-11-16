@@ -26,12 +26,33 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
    try {
       const data = req.body.data
-      const description = req.body.description
+      const description = req.body?.description
       let phone = ''
       data.isNorth ? phone = await avitoPhoneApi.getPhoneTwo(data.chatId) : phone = await avitoPhoneApi.getPhoneOne(data.chatId)
       const bxId = await bitrixApi.addCandidateAvito(data, phone)
       const user = await CandidateService.addCandidate(data, description, phone, bxId)
       logger.info(`POST /candidate`)
+      res.send(user)
+   } catch (error) {
+      logger.error(`POST /candidate \n ${error}`)
+      res.status(500)
+      res.send(error)
+   }
+})
+// Добавление случайного кандидата
+router.post('/add', async (req, res) => {
+   try {
+      const description = req.body.description
+      const body = req.body
+      const data = {
+         name: body.name,
+         titleVacansy: body.titleVacansy,
+         bxId: body.bxId
+      }
+      const phone = req.body.phone
+      const bxId = await bitrixApi.addCustomCandidate(data, phone)
+      const user = await CandidateService.addCustomCandidate(data, description, phone, bxId)
+      logger.info(`POST /candidate/add`)
       res.send(user)
    } catch (error) {
       logger.error(`POST /candidate \n ${error}`)
@@ -67,54 +88,52 @@ router.post('/history/:chat_id', async (req, res) => {
 // Добавление истории в Avito
 router.post('/history/avito/:chat_id', async (req, res) => {
    const chatId = req.params.chat_id
-try {
-   const body = req.body
-   const history = new History(body.stage, body.description)
-   const user = await CandidateService.pushHistory(chatId, history)
-   bitrixApi.updateCandidate(body.stage, body.bxId)
-   logger.info(`POST /candidate/avito/history/${chatId}`)
-const timestamp = user.timeUpdate;  // Ваше численное значение времени
-   const date = new Date(timestamp * 1000);
-   const formattedDate = date.toLocaleDateString('ru-RU');
-   const rest = await axios.post('http://127.0.0.1:6060', {
-      "chatId": user.data?.chatId,
-      "titleVacansy": user.data.titleVacansy,
-      "name": user.data.name,
-      "phone": user.phone,
-      "description": '',
-      "time":  formattedDate,
-      "stage": user.stage,
-      "area": "avito"
-   })
-
-   res.send(user)
-} catch (error) {
-   logger.error(`POST /candidate/avito/history/${chatId} \n ${error}`)
-   res.status(500)
-   res.send(error)
-}
+   try {
+      const body = req.body
+      const history = new History(body.stage, body.description)
+      const user = await CandidateService.pushHistory(chatId, history)
+      bitrixApi.updateCandidate(body.stage, body.bxId)
+      logger.info(`POST /candidate/avito/history/${chatId}`)
+      const timestamp = user.timeUpdate;  // Ваше численное значение времени
+      const date = new Date(timestamp * 1000);
+      const formattedDate = date.toLocaleDateString('ru-RU');
+      const rest = await axios.post('http://127.0.0.1:6060', {
+         "chatId": user.data?.chatId,
+         "titleVacansy": user.data.titleVacansy,
+         "name": user.data.name,
+         "phone": user.phone,
+         "description": '',
+         "time":  formattedDate,
+         "stage": user.stage,
+         "area": "avito"
+      })
+      res.send(user)
+   } catch (error) {
+      logger.error(`POST /candidate/avito/history/${chatId} \n ${error}`)
+      res.status(500)
+      res.send(error)
+   }
 })
 router.get('/xl', async (req, res) => {
-try {
- const response = await axios.get('http://127.0.0.1:6060/get_file', {
-   responseType: 'stream', // Устанавливаем responseType в 'stream' для получения потока данных
- });
+   try {
+      const response = await axios.get('http://127.0.0.1:6060/get_file', {
+         responseType: 'stream', // Устанавливаем responseType в 'stream' для получения потока данных
+      });
 
- const contentDispositionHeader = response.headers['content-disposition'];
- const filename = contentDispositionHeader
-   ? contentDispositionHeader.split('filename=')[1]
-   : 'file.bin';
+   const contentDispositionHeader = response.headers['content-disposition'];
+   const filename = contentDispositionHeader
+      ? contentDispositionHeader.split('filename=')[1]
+      : 'file.bin';
 
- // Устанавливаем заголовки для скачивания файла
- res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
- res.setHeader('Content-Type', response.headers['content-type']);
+      // Устанавливаем заголовки для скачивания файла
+      res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
+      res.setHeader('Content-Type', response.headers['content-type']);
 
- // Перенаправляем поток данных из Axios в поток ответа Express
- response.data.pipe(res);
-} catch (error) {
- console.error(error);
- res.status(500).send(error);
-}
+   // Перенаправляем поток данных из Axios в поток ответа Express
+      response.data.pipe(res);
+   } catch (error) {
+      res.status(500).send(error);
+   }
 });
 
 module.exports = router 
